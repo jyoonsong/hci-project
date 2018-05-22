@@ -1,114 +1,61 @@
-html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -ms-overflow-style:scrollbar;
+@import 'fonts';
+
+body {
+  @extend %full;
+  position: fixed;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  min-width: $landscape;
+  margin: 0;
+  background-color: $bg-color;
+  color: $text-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  line-height: 1.4;
 }
 
-*,::after,::before {
-  -webkit-box-sizing:inherit;
-  box-sizing:inherit
+%full {
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- */
-
-::-moz-selection {
-  background: $primary-color;
-  color: $grey-color-light;
-  text-shadow: none;
+%circle {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-::selection {
-  background: $primary-color;
-  color: $grey-color-light;
-  text-shadow: none;
+.container {
+  @extend %full;
+  display: table;
+  position: absolute;
 }
 
-.no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+.box {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
-.no-events {
-  pointer-events: none;
+.center-x {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@-ms-viewport {
-  width: device-width;
+main {
+  height: 60%;
+  height: 60vh;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset, ul {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-  resize: none;
-  max-height: 10em;
-}
-
-/* added */
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover, a:focus,
-button:hover, button:focus,
-.btn:hover, .btn:focus {
-  cursor: pointer;
-  outline: none;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-}
-
-input:disabled:hover {
-  cursor: not-allowed;
-}
-
-ul {
-  list-style: none;
+aside {
+  height: 40%;
+  height: 40vh;
 }
 
 /* ==========================================================================
@@ -122,6 +69,30 @@ ul {
     padding: 0.2em 0;
 }
 
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+u { text-decoration: none; border-bottom: 1px solid;}
+em { font-style: italic; }
+strong { font-weight: 600; }
+small { font-size: 75%; }
+.light { font-weight: 300; }
+.thin { font-weight: 100; }
+
+/* ==========================================================================
+   Color classes
+   ========================================================================== */
+
+@for $i from 0 through 9 {
+  .grey-#{$i} {
+    background-color: map-get($grey, #{$i});
+  }
+  .text-grey-#{$i} {
+    color: map-get($grey, #{$i});
+  }
+}
+  
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -129,7 +100,6 @@ ul {
 .none {
     display: none !important;
 }
-
 .sr-only {
     border: 0;
     clip: rect(0 0 0 0);
@@ -143,7 +113,6 @@ ul {
     width: 1px;
     white-space: nowrap; /* 1 */
 }
-
 .hidden {
   opacity: 0;
   visibility: hidden;
@@ -154,3 +123,13 @@ ul {
   visibility: visible !important;
   transition-delay: .3s;
 }
+
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.mx-0 {
+  margin-right: 0;
+  margin-left: 0;
+}
+
