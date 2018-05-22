@@ -24,7 +24,7 @@ var taskSkull = {
     "taskName" : taskNames[0],
     "status" : taskStatus[0], // 데이터 분리 (중복데이터)
     "data" : {
-        "orgName": "",
+        "orgName": "name",
         "orgEvent": [{
             "name": "",
             "startDate": "",
@@ -140,7 +140,7 @@ function addTask(startMonth, endMonth, taskName = taskNames[0], status = "Center
         "taskName" : taskName,
         "status" : status,
         "data" : {
-            "orgName": "",
+            "orgName": "test1",
             "orgEvent": [],
             "orgDescription": ""
         }

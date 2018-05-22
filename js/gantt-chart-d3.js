@@ -133,9 +133,9 @@ d3.gantt = function() {
                 }).transition()
                 .attr("y", 0)
                 .attr("transform", function(d) {
-                    x_val = x(d.startDate) + 5
-                    y_val = y(taskName) + 5
-                    return "translate(" + x_val + 5 + "," + y_val + ")";
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) + 5;
+                    return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
@@ -171,6 +171,9 @@ d3.gantt = function() {
                 if(taskStatus[d.status] == null){ return "bar";}
                 return "node " + taskStatus[d.status];
             })
+            .attr("data-name", function(d) {
+              return "" + d.data.orgName;
+            })
             .transition()
             .attr("y", 0)
             .attr("transform", rectTransform)
@@ -193,15 +196,16 @@ d3.gantt = function() {
                 .append("rect")
                 .attr("rx", 5)
                 .attr("ry", 5)
+                
                 .attr("class", function(d){
                     // if(taskStatus[d.status] == null){ return "bar";}
                     return "subnode " + taskStatus[d.status];
                 }).transition()
                 .attr("y", 0)
                 .attr("transform", function(d) {
-                    x_val = x(d.startDate) + 5
-                    y_val = y(taskName) + 5
-                    return "translate(" + x_val + 5 + "," + y_val + ")";
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) + 5;
+                    return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
