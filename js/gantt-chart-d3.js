@@ -19,7 +19,7 @@ d3.gantt = function() {
         left : 100
     };
 
-    var selector = 'body';
+    var selector = '#chart';
     var timeDomainStart = d3.time.day.offset(new Date(),-3);
     var timeDomainEnd = d3.time.hour.offset(new Date(),+3);
     var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
