@@ -16,7 +16,7 @@ d3.gantt = function() {
         top : 20,
         right : 40,
         bottom : 40,
-        left : 100
+        left : 20
     };
 
     var selector = '#chart';
@@ -71,7 +71,7 @@ d3.gantt = function() {
     };
 
     var initAxis = function() {
-        x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 10000 ]).clamp(true);
+        x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 5000 ]).clamp(true);
         y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
 
         xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat))
@@ -110,8 +110,9 @@ d3.gantt = function() {
             .attr("rx", 5)
             .attr("ry", 5)
             .attr("class", function(d){
+                console.log(d)
                 if(taskStatus[d.status] == null){ return "bar";}
-                return taskStatus[d.status];
+                return "node " + taskStatus[d.status];
             })
             .attr("y", 0)
             .attr("transform", rectTransform)
@@ -120,11 +121,33 @@ d3.gantt = function() {
                 return Math.max(1,(x(d.endDate) - x(d.startDate)));
             });
 
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0, " + (height - margin.top - margin.bottom + 20) + ")")
-            .transition()
-            .call(xAxis);
+        // for (task in tasks) {
+        //     console.log(task)
+        //     svg.selectAll(".chart")
+        //         .data(task.data.orgEvent, keyFunction).enter()
+        //         .append("rect")
+        //         .attr("rx", 5)
+        //         .attr("ry", 5)
+        //         .attr("class", function(d){
+        //             console.log(d)
+        //             if(taskStatus[d.status] == null){ return "bar";}
+        //             return "node " + taskStatus[d.status];
+        //         })
+        //         .attr("y", 0)
+        //         .attr("transform", function(d) {
+        //             return "translate(" + x(d.startDate) + 5 + "," + y(d.taskName) + 5 + ")";
+        //         })
+        //         .attr("height", function(d) { return y.rangeBand() - 10; })
+        //         .attr("width", function(d) {
+        //             return Math.max(1,(x(d.endDate) - x(d.startDate)));
+        //         });
+        // }
+
+        // svg.append("g")
+        //     .attr("class", "x axis")
+        //     .attr("transform", "translate(0, " + (height - margin.top - margin.bottom + 20) + ")")
+        //     .transition()
+        //     .call(xAxis);
 
         svg.append("g")
             .attr("class", "x2 axis")
@@ -132,7 +155,7 @@ d3.gantt = function() {
             .transition()
             .call(xAxis);
 
-        svg.append("g").attr("class", "y axis").transition().call(yAxis);
+        // svg.append("g").attr("class", "y axis").transition().call(yAxis);
 
         return gantt;
 
@@ -154,7 +177,10 @@ d3.gantt = function() {
             .attr("ry", 5)
             .attr("class", function(d){
                 if(taskStatus[d.status] == null){ return "bar";}
-                return taskStatus[d.status];
+                return "node " + taskStatus[d.status];
+            })
+            .attr("id", function(d){
+                return d.id
             })
             .transition()
             .attr("y", 0)
@@ -173,10 +199,9 @@ d3.gantt = function() {
 
         rect.exit().remove();
 
-        console.log(new Date(timeDomainStart))
-        svg.select(".x").transition().call(xAxis);
+        // svg.select(".x").transition().call(xAxis);
         svg.select(".x2").transition().call(x2Axis);
-        svg.select(".y").transition().call(yAxis);
+        // svg.select(".y").transition().call(yAxis);
 
         return gantt;
     };
