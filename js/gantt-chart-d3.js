@@ -101,14 +101,14 @@ d3.gantt = function() {
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
-      
+
         svg.selectAll(".chart")
             .data(tasks, keyFunction).enter()
+            .append("g").attr("id", function(d, i) { return "rect" + i })
             .append("rect")
             .attr("rx", 5)
             .attr("ry", 5)
             .attr("class", function(d){
-                console.log(d)
                 if(taskStatus[d.status] == null){ return "bar";}
                 return "node " + taskStatus[d.status];
             })
@@ -116,50 +116,38 @@ d3.gantt = function() {
             .attr("transform", rectTransform)
             .attr("height", function(d) { return y.rangeBand(); })
             .attr("width", function(d) {
-                console.log("--")
-                console.log(d)
-
                 return Math.max(1,(x(d.endDate) - x(d.startDate)));
             });
 
-        tasks.forEach(function (task){
-            console.log(task.data.orgEvent)
+        tasks.forEach(function (task, i){
             taskName = task.taskName
-            svg.selectAll(".chart")
+            console.log(taskName)
+            svg.select("#rect"+i).selectAll(".subnode")
                 .data(task.data.orgEvent).enter()
                 .append("rect")
                 .attr("rx", 5)
                 .attr("ry", 5)
                 .attr("class", function(d){
-                    console.log(d)
-                    if(taskStatus[d.status] == null){ return "bar";}
-                    return "node " + taskStatus[d.status];
+                    // if(taskStatus[d.status] == null){ return "bar";}
+                    return "subnode " + taskStatus[d.status];
                 }).transition()
                 .attr("y", 0)
                 .attr("transform", function(d) {
-                    console.log(x(d.startDate) + 5 + "," + y(taskName))
-                    return "translate(" + x(d.startDate) + 5 + "," + y(taskName) + 5 + ")";
+                    x_val = x(d.startDate) + 5
+                    y_val = y(taskName) + 5
+                    return "translate(" + x_val + 5 + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
-                    console.log(Math.max(1,(x(d.endDate) - x(d.startDate))));
                     return Math.max(1,(x(d.endDate) - x(d.startDate)));
                 });
         })
-
-        // svg.append("g")
-        //     .attr("class", "x axis")
-        //     .attr("transform", "translate(0, " + (height - margin.top - margin.bottom + 20) + ")")
-        //     .transition()
-        //     .call(xAxis);
 
         svg.append("g")
             .attr("class", "x2 axis")
             .attr("transform", "translate(0, " + (height) + ")")
             .transition()
             .call(xAxis);
-
-        // svg.append("g").attr("class", "y axis").transition().call(yAxis);
 
         return gantt;
 
@@ -174,8 +162,8 @@ d3.gantt = function() {
 
         let ganttChartGroup = svg.select(".gantt-chart");
         let rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
-
         rect.enter()
+            .append("g").attr("id", function(d, i) { return "rect"+i; })
             .insert("rect",":first-child")
             .attr("rx", 5)
             .attr("ry", 5)
@@ -191,14 +179,35 @@ d3.gantt = function() {
                 return Math.max(1,(x(d.endDate) - x(d.startDate)));
             });
 
-        rect.transition()
-            .attr("transform", rectTransform)
-            .attr("height", function(d) { return y.rangeBand(); })
-            .attr("width", function(d) {
-                return Math.max(1,(x(d.endDate) - x(d.startDate)));
-            });
+        // rect.transition()
+        //     .attr("transform", rectTransform)
+        //     .attr("height", function(d) { return y.rangeBand(); })
+        //     .attr("width", function(d) {
+        //         return Math.max(1,(x(d.endDate) - x(d.startDate)));
+        //     });
 
-        rect.exit().remove();
+        tasks.forEach(function (task, i){
+            taskName = task.taskName
+            svg.select("#rect"+i).selectAll(".subnode")
+                .data(task.data.orgEvent).enter()
+                .append("rect")
+                .attr("rx", 5)
+                .attr("ry", 5)
+                .attr("class", function(d){
+                    // if(taskStatus[d.status] == null){ return "bar";}
+                    return "subnode " + taskStatus[d.status];
+                }).transition()
+                .attr("y", 0)
+                .attr("transform", function(d) {
+                    x_val = x(d.startDate) + 5
+                    y_val = y(taskName) + 5
+                    return "translate(" + x_val + 5 + "," + y_val + ")";
+                })
+                .attr("height", function(d) { return y.rangeBand() - 10; })
+                .attr("width", function(d) {
+                    return Math.max(1,(x(d.endDate) - x(d.startDate)));
+                });
+        })
 
         // svg.select(".x").transition().call(xAxis);
         svg.select(".x2").transition().call(x2Axis);
