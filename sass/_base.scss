@@ -13,8 +13,12 @@ html {
  * Remove text-shadow in selection highlight:
  */
 
-::-moz-selection, ::selection  {
-  background: $grey-0;
+::-moz-selection {
+  background: $grey-1;
+  text-shadow: none;
+}
+::selection {
+  background: $grey-1;
   text-shadow: none;
 }
 

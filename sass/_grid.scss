@@ -3,10 +3,23 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  .justify-center {
+    justify-content: center;
+  }
+  .align-center {
+    align-items: center;
+  }
 }
 .flex-column {
   flex-direction: column;
 }
+
+.container {
+  position: relative;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
 .row {
   @extend .flex;
   -webkit-flex-wrap: wrap;
@@ -14,34 +27,6 @@
           flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-}
-
-@media (min-width: 576px) {
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-@media (min-width: 768px) {
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-@media (min-width: 992px) {
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
 }
 
 .mx-0 > .col,

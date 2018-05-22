@@ -29,7 +29,7 @@ $grey-7: map-get($grey, "7");
 $grey-8: map-get($grey, "8");
 $grey-9: map-get($grey, "9");
 
-$landscape: 800px !default;
+$landscape: 1080px !default;
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {

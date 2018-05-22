@@ -31,23 +31,6 @@ body {
   border-radius: 50%;
 }
 
-.container {
-  @extend %full;
-  display: table;
-  position: absolute;
-}
-
-.box {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.center-x {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 main {
   height: 60%;
   height: 60vh;
@@ -76,7 +59,7 @@ aside {
 u { text-decoration: none; border-bottom: 1px solid;}
 em { font-style: italic; }
 strong { font-weight: 600; }
-small { font-size: 75%; }
+small { font-size: 75%; color: $grey-6 }
 .light { font-weight: 300; }
 .thin { font-weight: 100; }
 
@@ -131,5 +114,10 @@ small { font-size: 75%; }
 .mx-0 {
   margin-right: 0;
   margin-left: 0;
+}
+
+.center-x {
+  margin-left: auto;
+  margin-right: auto;
 }
 
