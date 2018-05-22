@@ -36,7 +36,7 @@ d3.gantt = function() {
     let rectTransform = function(d) {
         return "translate(" + x(d.startDate) + "," + y(d.taskName) + ")";
     };
-
+  
     let x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
 
     let y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
@@ -104,48 +104,93 @@ d3.gantt = function() {
       
         svg.selectAll(".chart")
             .data(tasks, keyFunction).enter()
-            .append("rect")
-            .attr("rx", 5)
-            .attr("ry", 5)
-            .attr("class", function(d){
-                console.log(d)
-                if(taskStatus[d.status] == null){ return "bar";}
-                return "node " + taskStatus[d.status];
-            })
-            .attr("y", 0)
-            .attr("transform", rectTransform)
-            .attr("height", function(d) { return y.rangeBand(); })
-            .attr("width", function(d) {
-                console.log("--")
-                console.log(d)
-
-                return Math.max(1,(x(d.endDate) - x(d.startDate)));
-            });
-
-        tasks.forEach(function (task){
-            console.log(task.data.orgEvent)
-            taskName = task.taskName
-            svg.selectAll(".chart")
-                .data(task.data.orgEvent).enter()
-                .append("rect")
+            .append("g")
+            .each(function(d){
+              console.log("here");
+              d3.select(this).data(d.data).enter()
+                .append('rect')
                 .attr("rx", 5)
                 .attr("ry", 5)
                 .attr("class", function(d){
-                    console.log(d)
-                    if(taskStatus[d.status] == null){ return "bar";}
-                    return "node " + taskStatus[d.status];
-                }).transition()
+                  console.log(d)
+                  if(taskStatus[d.status] == null){ return "bar";}
+                  return "node " + taskStatus[d.status];
+                })
                 .attr("y", 0)
                 .attr("transform", function(d) {
-                    console.log(x(d.startDate) + 5 + "," + y(taskName))
-                    return "translate(" + x(d.startDate) + 5 + "," + y(taskName) + 5 + ")";
+                  return "translate(" + x(d.startDate) + "," + y(d.taskName) + ")";
                 })
-                .attr("height", function(d) { return y.rangeBand() - 10; })
+                .attr("height", function(d) { return y.rangeBand(); })
                 .attr("width", function(d) {
-                    console.log(Math.max(1,(x(d.endDate) - x(d.startDate))));
+                    console.log("--")
+                    console.log(d)
+
                     return Math.max(1,(x(d.endDate) - x(d.startDate)));
-                });
-        })
+                })
+                ;
+              d3.select(this).data(d.data.orgEvent).enter()
+                .append('rect')
+                .attr("rx", 5)
+                .attr("ry", 5)
+                .attr("class", "event")
+//                .attr("y", 0)
+//                .attr("transform", function(e) {
+//                  return "translate(" + x(e.startDate) + "," + y(d.taskName) + ")";
+//                })
+//                .attr("height", function(e) { return y.rangeBand(); })
+//                .attr("width", function(e) {
+//                    console.log("--")
+//                    console.log(e)
+//
+//                    return Math.max(1,(x(d.endDate) - x(d.startDate)));
+//                })
+//                ;
+            })
+//            .append("rect")
+//            .attr("rx", 5)
+//            .attr("ry", 5)
+//            .attr("class", function(d){
+//                console.log(d)
+//                if(taskStatus[d.status] == null){ return "bar";}
+//                return "node " + taskStatus[d.status];
+//            })
+//            .attr("y", 0)
+//            .attr("transform", rectTransform)
+//            .attr("height", function(d) { return y.rangeBand(); })
+//            .attr("width", function(d) {
+//                console.log("--")
+//                console.log(d)
+//
+//                return Math.max(1,(x(d.endDate) - x(d.startDate)));
+//            })
+//            
+            ;
+            
+
+//        tasks.forEach(function (task){
+//            console.log(task.data.orgEvent)
+//            taskName = task.taskName
+//            svg.selectAll(".chart")
+//                .data(task.data.orgEvent).enter()
+//                .append("rect")
+//                .attr("rx", 5)
+//                .attr("ry", 5)
+//                .attr("class", function(d){
+//                    console.log(d)
+//                    if(taskStatus[d.status] == null){ return "bar";}
+//                    return "node " + taskStatus[d.status];
+//                }).transition()
+//                .attr("y", 0)
+//                .attr("transform", function(d) {
+//                    console.log(x(d.startDate) + 5 + "," + y(taskName))
+//                    return "translate(" + x(d.startDate) + 5 + "," + y(taskName) + 5 + ")";
+//                })
+//                .attr("height", function(d) { return y.rangeBand() - 10; })
+//                .attr("width", function(d) {
+//                    console.log(Math.max(1,(x(d.endDate) - x(d.startDate))));
+//                    return Math.max(1,(x(d.endDate) - x(d.startDate)));
+//                });
+//        })
 
         // svg.append("g")
         //     .attr("class", "x axis")
