@@ -5,13 +5,12 @@ $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 
 $text-color:       #343a40 !default;
-$primary-color:    #50F2F5 !default;
-$secondary-color:  #4DB9FF !default;
-$background-color: #fff !default;
-$grey-color-light: #f8f9fa !default;
+$bg-color: #fff !default;
+$grey-0: #f8f9fa !default;
+$grey-3: #dee2e6 !default;
+$grey-8: #343a40 !default;
 
-$on-palm:          575px !default;
-$on-tablet:        767px !default;
+$landscape: 800px !default;
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
@@ -22,7 +21,7 @@ $on-tablet:        767px !default;
 html {box-sizing: border-box}
 
 @import
+  "base",
   "common",
-  "custom",
-  "buttons"
+  "custom"
 ;
