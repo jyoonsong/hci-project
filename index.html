@@ -33,7 +33,6 @@
   <!-- <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> -->
 </head>
 <body>
-  <button type="button" onclick="addRandomHistory()"> test </button>
   <main class="flex flex-column">
     <!-- chart controls -->
     <header class="flex align-center">
@@ -44,12 +43,18 @@
         <a class="btn btn-line">20년대</a>
         <a class="btn btn-line">30년대</a>
         <a class="btn btn-line">40년대 (~1945)</a>
+        <button type="button" onclick="addRandomHistory()"> test </button>
       </div>
       
     </header>
     <!-- chart -->
     <section id="chart" class="flex align-center justify-center">
-      Chart
+      <div class="yAxis flex flex-column align-center">
+        <span class="text-blue">우</span>
+        <span class="bar"></span>
+        <span class="text-red">좌</span>
+      </div>
+      
     </section>
   </main>
   <!-- JavaScripts -->

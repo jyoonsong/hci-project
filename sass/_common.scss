@@ -75,6 +75,12 @@ small { font-size: 75%; color: $grey-6 }
     color: map-get($grey, #{$i});
   }
 }
+.text-blue {
+  color: $blue;
+}
+.text-red {
+  color: $red;
+}
   
 /* ==========================================================================
    Helper classes

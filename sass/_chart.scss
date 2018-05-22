@@ -25,3 +25,17 @@ header {
   overflow-x: auto;
   white-space: nowrap;
 }
+.yAxis {
+  align-self: stretch;
+  justify-content: space-between;
+  margin-left: 20px;
+  padding: 2rem 0 4rem;
+  .bar {
+    background: $blue; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, $blue, $red); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, $blue, $red); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 3px;
+    flex-grow: 1;
+    margin: 10px 0;
+  }
+}
