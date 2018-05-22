@@ -39,3 +39,14 @@ header {
     margin: 10px 0;
   }
 }
+
+.subnode {
+  pointer-events: none;
+  opacity: 0;
+  fill: red;
+  transition: opacity .2s linear;
+}
+
+.node:hover ~ .subnode {
+    opacity: 1;
+}

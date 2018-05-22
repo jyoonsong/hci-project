@@ -81,6 +81,9 @@ var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(fo
 
 
 gantt.timeDomainMode("fixed");
+gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1945,0,0,0,0), 0), Date.UTC(year=1970,11,0,0,0) ]);
+gantt.tickFormat("%m")
+
 // changeTimeDomain(timeDomainString);
 tasks = [task_new, task_new2]
 gantt(tasks);
@@ -135,11 +138,16 @@ function addTask(startMonth, endMonth, taskName = taskNames[0], status = "Center
         "startDate" : startMonth, //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
         "endDate" : endMonth, // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
         "taskName" : taskName,
-        "status" : status
+        "status" : status,
+        "data" : {
+            "orgName": "",
+            "orgEvent": [],
+            "orgDescription": ""
+        }
     });
 
     // changeTimeDomain(timeDomainString);
-    // gantt.redraw(tasks);
+    gantt.redraw(tasks);
 
 };
 
@@ -162,10 +170,8 @@ function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
 
-gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1945,0,0,0,0), 0), Date.UTC(year=1970,11,0,0,0) ]);
-gantt.tickFormat("%m")
-gantt.redraw(tasks);
-
 addTask(makeYearMonth(1945, 3), makeYearMonth(1945, 5), taskNames[0], taskNames[0])
 addTask(makeYearMonth(1945, 4), makeYearMonth(1945, 7), taskNames[1], taskNames[1])
 addTask(makeYearMonth(1945, 6), makeYearMonth(1945, 9), taskNames[0], taskNames[0])
+
+console.log(tasks)
