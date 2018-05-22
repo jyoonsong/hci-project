@@ -71,7 +71,7 @@ task_new["data"] = {
 var format = "%H:%M";
 var timeDomainString = "1day";
 
-var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).height(450).width(5000);
+var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
 
 
 gantt.timeDomainMode("fixed");

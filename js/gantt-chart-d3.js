@@ -24,7 +24,7 @@ d3.gantt = function() {
     let timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
     let taskTypes = [];
     let taskStatus = [];
-    let height = document.querySelector("#chart").offsetHeight - margin.top - margin.bottom - 5;
+    let height = document.body.clientWidth - margin.top - margin.bottom - 5;
     let width = document.body.clientWidth - margin.right - margin.left-5;
 
     let tickFormat = "%H:%M";
@@ -102,8 +102,6 @@ d3.gantt = function() {
             .attr("height", height + margin.top + margin.bottom)
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
       
-      console.log(height);
-
         svg.selectAll(".chart")
             .data(tasks, keyFunction).enter()
             .append("rect")
