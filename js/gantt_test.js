@@ -58,6 +58,12 @@ task_new["data"] = {
     "orgDescription": "테스트 설명1"
 }
 
+task_new2 = Object.assign({}, task_new);
+task_new2["startDate"] = makeYearMonth(1945, 1)
+task_new2["endDate"] = makeYearMonth(1946, 4)
+task_new2["status"] = taskNames[2]
+task_new2["taskName"] = taskNames[2]
+
 // tasks.sort(function(a, b) {
 //     return a.endDate - b.endDate;
 // });
@@ -76,7 +82,7 @@ var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(fo
 
 gantt.timeDomainMode("fixed");
 // changeTimeDomain(timeDomainString);
-tasks = [task_new]
+tasks = [task_new, task_new2]
 gantt(tasks);
 // gantt()
 
@@ -133,7 +139,7 @@ function addTask(startMonth, endMonth, taskName = taskNames[0], status = "Center
     });
 
     // changeTimeDomain(timeDomainString);
-    gantt.redraw(tasks);
+    // gantt.redraw(tasks);
 
 };
 
