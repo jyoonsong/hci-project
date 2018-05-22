@@ -21,3 +21,7 @@ header {
 #chart {
   flex-grow: 1;
 }
+.scrollable {
+  overflow-x: auto;
+  white-space: nowrap;
+}

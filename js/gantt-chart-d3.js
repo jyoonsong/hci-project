@@ -1,4 +1,3 @@
-
 /**
  * @author Dimitry Kudrayvtsev
  * @version 2.1
@@ -9,48 +8,48 @@
  */
 
 d3.gantt = function() {
-    var FIT_TIME_DOMAIN_MODE = "fit";
-    var FIXED_TIME_DOMAIN_MODE = "fixed";
+    let FIT_TIME_DOMAIN_MODE = "fit";
+    let FIXED_TIME_DOMAIN_MODE = "fixed";
 
-    var margin = {
+    let margin = {
         top : 20,
         right : 40,
         bottom : 40,
         left : 20
     };
 
-    var selector = '#chart';
-    var timeDomainStart = d3.time.day.offset(new Date(),-3);
-    var timeDomainEnd = d3.time.hour.offset(new Date(),+3);
-    var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
-    var taskTypes = [];
-    var taskStatus = [];
-    var height = document.body.clientHeight - margin.top - margin.bottom-5;
-    var width = document.body.clientWidth - margin.right - margin.left-5;
+    let selector = '#chart';
+    let timeDomainStart = d3.time.day.offset(new Date(),-3);
+    let timeDomainEnd = d3.time.hour.offset(new Date(),+3);
+    let timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
+    let taskTypes = [];
+    let taskStatus = [];
+    let height = document.querySelector("#chart").offsetHeight - margin.top - margin.bottom - 5;
+    let width = document.body.clientWidth - margin.right - margin.left-5;
 
-    var tickFormat = "%H:%M";
+    let tickFormat = "%H:%M";
 
-    var keyFunction = function(d) {
+    let keyFunction = function(d) {
         return d.startDate + d.taskName + d.endDate;
     };
 
-    var rectTransform = function(d) {
+    let rectTransform = function(d) {
         return "translate(" + x(d.startDate) + "," + y(d.taskName) + ")";
     };
 
-    var x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
+    let x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
 
-    var y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
+    let y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
 
-    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
+    let xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
         .tickSize(8).tickPadding(8);
 
-    var x2Axis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
+    let x2Axis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
         .tickSize(8).tickPadding(8);
 
-    var yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
+    let yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
 
-    var initTimeDomain = function(tasks) {
+    let initTimeDomain = function(tasks) {
         if (timeDomainMode === FIT_TIME_DOMAIN_MODE) {
             if (tasks === undefined || tasks.length < 1) {
                 timeDomainStart = d3.time.day.offset(new Date(), -3);
@@ -70,7 +69,7 @@ d3.gantt = function() {
         }
     };
 
-    var initAxis = function() {
+    let initAxis = function() {
         x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 5000 ]).clamp(true);
         y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
 
@@ -88,10 +87,9 @@ d3.gantt = function() {
         initTimeDomain(tasks);
         initAxis();
 
-        var svg = d3.select(selector)
+        let svg = d3.select(selector)
             .append("div")
-            .attr("class", "test-div")
-            .attr("style", "overflow-x: auto;white-space: nowrap;")
+            .attr("class", "scrollable")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("svg")
@@ -103,6 +101,8 @@ d3.gantt = function() {
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+      
+      console.log(height);
 
         svg.selectAll(".chart")
             .data(tasks, keyFunction).enter()
@@ -166,10 +166,10 @@ d3.gantt = function() {
         initTimeDomain(tasks);
         initAxis();
 
-        var svg = d3.select(".chart");
+        let svg = d3.select(".chart");
 
-        var ganttChartGroup = svg.select(".gantt-chart");
-        var rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
+        let ganttChartGroup = svg.select(".gantt-chart");
+        let rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
 
         rect.enter()
             .insert("rect",":first-child")
