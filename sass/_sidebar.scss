@@ -1,6 +1,14 @@
 aside {
   border-top: 1px solid $grey-2;
 }
+#map {
+  background: url(../img/tmp-map.png) no-repeat center;
+  background-size: 100%;
+  transition: background-size .5s ease;
+  &:hover {
+    background-size: 140%;
+  }
+}
 #des {
   padding: 1.2em .6em;
 }

@@ -34,12 +34,14 @@ header {
 .scrollable {
   overflow-x: auto;
   white-space: nowrap;
+  margin-left: -15px;
 }
 .yAxis {
   align-self: stretch;
   justify-content: space-between;
   margin-left: 20px;
-  padding: 2rem 0 4rem;
+  padding: 2rem 15px 4rem 0;
+  background-color: $bg-color;
   .bar {
     background: $blue; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, $blue, $red); /* Chrome 10-25, Safari 5.1-6 */
