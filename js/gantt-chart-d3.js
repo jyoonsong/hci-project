@@ -182,16 +182,19 @@ d3.gantt = function() {
                 return Math.max(1,(x(d.endDate) - x(d.startDate)));
             });
 
-        // rect.transition()
+        // ganttChartGroup
         //     .attr("transform", rectTransform)
         //     .attr("height", function(d) { return y.rangeBand(); })
         //     .attr("width", function(d) {
-        //         return Math.max(1,(x(d.endDate) - x(d.startDate)));
+        //         return Math.max(0,(x(d.endDate) - x(d.startDate)));
         //     });
 
         tasks.forEach(function (task, i){
             taskName = task.taskName
-            svg.select("#rect"+i).selectAll(".subnode")
+
+            rect = svg.select("#rect"+i)
+
+            rect.selectAll(".subnode")
                 .data(task.data.orgEvent).enter()
                 .append("rect")
                 .attr("rx", 5)
@@ -209,8 +212,29 @@ d3.gantt = function() {
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
-                    return Math.max(1,(x(d.endDate) - x(d.startDate)));
+                    return Math.max(0,(x(d.endDate) - x(d.startDate)));
                 });
+
+            rect.selectAll("rect")
+                .transition()
+                .attr("transform", rectTransform)
+                .attr("height", function(d) { return y.rangeBand(); })
+                .attr("width", function(d) {
+                    return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                });
+
+            rect.selectAll(".subnode")
+                .transition()
+                .attr("transform", function(d) {
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) + 5;
+                    return "translate(" + x_val + "," + y_val + ")";
+                })
+                .attr("height", function(d) { return y.rangeBand() - 10; })
+                .attr("width", function(d) {
+                    return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                });
+
         })
 
         // svg.select(".x").transition().call(xAxis);
