@@ -39,11 +39,13 @@
       <div class="container">
         <a class="btn" href=""><b>대한민국의 독립운동사</b></a>
         &nbsp; | &nbsp;
-        <a class="btn btn-line" onclick="changeTime(0)">전체</a>
-        <a class="btn btn-line" onclick="changeTime(1)">10년대</a>
-        <a class="btn btn-line" onclick="changeTime(2)">20년대</a>
-        <a class="btn btn-line" onclick="changeTime(3)">30년대</a>
-        <a class="btn btn-line" onclick="changeTime(4)">40년대 (~1945)</a>
+        <span id="changeTime">
+          <a class="btn btn-line">전체</a>
+          <a class="btn btn-line">10년대</a>
+          <a class="btn btn-line">20년대</a>
+          <a class="btn btn-line">30년대</a>
+          <a class="btn btn-line">40년대 (~1945)</a>
+        </span>
         <button type="button" onclick="addRandomHistory()"> test </button>
       </div>
       
@@ -77,10 +79,13 @@
   </aside>
   
   <!-- JavaScripts -->
-  <script src="js/main.js"></script>
   <script type="text/javascript" src="js/plugins.js"></script>
   <script src="js/gantt-chart-d3.js"></script>
   <script src="js/gantt_test.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    window.onload = Index.init();
+  </script>
 
 </body>
 </html>
