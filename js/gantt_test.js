@@ -1,7 +1,7 @@
 
-var taskNames = [ "FarRight", "CenterRight", "Center", "CenterLeft", "FarLeft" ];
+let taskNames = [ "FarRight", "CenterRight", "Center", "CenterLeft", "FarLeft" ];
 
-var tasks = [
+let tasks = [
     {
         "startDate":new Date("Sun Dec 09 01:36:45 EST 2012"),
         "endDate":new Date("Sun Dec 09 02:36:45 EST 2012"),
@@ -10,7 +10,7 @@ var tasks = [
     }
 ];
 
-var taskStatus = {
+let taskStatus = {
     "FarRight" : "far-right",
     "CenterRight" : "mid-right",
     "Center" : "mid",
@@ -18,7 +18,7 @@ var taskStatus = {
     "FarLeft" : "far-left"
 };
 
-var taskSkull = {
+let taskSkull = {
     "startDate" : makeYearMonth(0, 0), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
     "endDate" : makeYearMonth(0, 0), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
     "taskName" : taskNames[0],
@@ -91,17 +91,17 @@ task_new2 =  {
 // tasks.sort(function(a, b) {
 //     return a.endDate - b.endDate;
 // });
-// var maxDate = tasks[tasks.length - 1].endDate;
+// let maxDate = tasks[tasks.length - 1].endDate;
 //
 // tasks.sort(function(a, b) {
 //     return a.startDate - b.startDate;
 // });
-// var minDate = tasks[0].startDate;
+// let minDate = tasks[0].startDate;
 
-var format = "%H:%M";
-var timeDomainString = "1day";
+let format = "%H:%M";
+let timeDomainString = "1day";
 
-var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
+let gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
 
 
 gantt.timeDomainMode("fixed");
@@ -160,7 +160,7 @@ function changeTimeDomain(timeDomainString) {
 }
 
 function getEndDate() {
-    var lastEndDate = Date.now();
+    let lastEndDate = Date.now();
     if (tasks.length > 0) {
         lastEndDate = tasks[tasks.length - 1].endDate;
     }
@@ -168,7 +168,7 @@ function getEndDate() {
     return lastEndDate;
 }
 
-var i = 0
+let i = 0
 function addTask(startMonth, endMonth, taskName = taskNames[0], status = "CenterRight") {
     tasks.push({
         "startDate" : startMonth, //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
