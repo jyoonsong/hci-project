@@ -1,6 +1,6 @@
 let Index = ( function () {
 
-  let $timeBtn, $root,
+  let $timeBtn, $nodes,
       _cursor = false;
 
   function init() {
@@ -10,6 +10,12 @@ let Index = ( function () {
     );
     $timeBtn.forEach(callChangeTime);
     setActive($timeBtn, 0);
+    
+    // click node to show content
+    $nodes = Array.from(
+      document.querySelectorAll("rect.node")
+    );
+    $nodes.forEach(callShowContent);
   }
   
   function callChangeTime(ele, index, $timeBtn) {
@@ -25,6 +31,28 @@ let Index = ( function () {
           $timeBtn[i].classList.remove("active");
       
     $timeBtn[index].classList.add("active");
+  }
+  
+  function callShowContent(node, i, $nodes) {
+    node.addEventListener("click", function() {
+      showContent(this);
+    });
+  }
+  
+  function showContent(node) {
+    // parse values
+    let vals = ["name", "date", "description"];
+    vals.forEach( function(val) {
+      console.log(document.getElementById("des-" + val));
+      document.getElementById("des-" + val).innerHTML = node.getAttribute("data-" + val);
+    });
+    // parse events
+    let events = node.dataset.events.split(',');
+    let eventBox = document.getElementById("des-events");
+    eventBox.innerHTML ="";
+    events.forEach( function(e) {
+      eventBox += ("<span class='circle'>" + e + "</span>")
+    })
   }
 
   function setCursor(cursor) {
