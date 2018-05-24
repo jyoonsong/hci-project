@@ -12,9 +12,9 @@ var tasks = [
 
 var taskStatus = {
     "FarRight" : "far-right",
-    "CenterRight" : "center-right",
-    "Center" : "center",
-    "CenterLeft" : "center-left",
+    "CenterRight" : "mid-right",
+    "Center" : "mid",
+    "CenterLeft" : "mid-left",
     "FarLeft" : "far-left"
 };
 
