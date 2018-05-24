@@ -56,14 +56,21 @@ header {
   }
 }
 
+.node:active,
+.node:focus,
+.node:hover {
+  cursor: pointer;
+}
+.node.active ~ .subnode,
+.node:active ~ .subnode,
+.node:focus ~ .subnode,
+.node:hover ~ .subnode {
+  opacity: 1;
+}
 .subnode {
   pointer-events: none;
   opacity: 0;
   fill: rgba(0,0,0,0.6);
   transition: opacity .2s linear;
   font-size: .75em;
-}
-
-.node:hover ~ .subnode {
-    opacity: 1;
 }
