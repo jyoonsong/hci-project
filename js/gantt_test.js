@@ -21,8 +21,9 @@ let taskStatus = {
 let taskSkull = {
     "startDate" : makeYearMonth(0, 0), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
     "endDate" : makeYearMonth(0, 0), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-    "taskName" : taskNames[0],
-    "status" : taskNames[0], // 데이터 분리 (중복데이터)
+    "taskName" : taskNames[0], // 성향
+    "status" : taskNames[0], // 성향별색상 데이터 분리 (중복데이터)
+    "location" : '',
     "data" : {
         "orgName": "name",
         "orgEvent": [{
@@ -42,47 +43,48 @@ let startYear = makeYearMonth(1910, 0)
 let endYear = makeYearMonth(1945, 0)
 
 let PossibleTimeDomain = [
-    {"startDate": makeYearMonth(1900, 0),"endDate": makeYearMonth(1910, 0)},
+    {"startDate": makeYearMonth(1910, 0),"endDate": makeYearMonth(1945, 0)},
     {"startDate": makeYearMonth(1910, 0),"endDate": makeYearMonth(1920, 0)},
     {"startDate": makeYearMonth(1920, 0),"endDate": makeYearMonth(1930, 0)},
-    {"startDate": makeYearMonth(1930, 0),"endDate": makeYearMonth(1945, 0)},
+    {"startDate": makeYearMonth(1930, 0),"endDate": makeYearMonth(1940, 0)},
+    {"startDate": makeYearMonth(1940, 0),"endDate": makeYearMonth(1945, 0)},
 ]
 
 
 task_new = taskSkull
-task_new["startDate"] = makeYearMonth(1900, 0)
-task_new["endDate"] = makeYearMonth(1901, 2)
+task_new["startDate"] = makeYearMonth(1910, 0)
+task_new["endDate"] = makeYearMonth(1911, 2)
 task_new["status"] = taskNames[4]
 task_new["taskName"] = taskNames[4]
 task_new["data"] = {
     "orgName": "테스트1",
     "orgEvent": [{
         "name": "사건1",
-        "startDate": makeYearMonth(1900, 1),
-        "endDate": makeYearMonth(1900, 11)
+        "startDate": makeYearMonth(1910, 1),
+        "endDate": makeYearMonth(1910, 11)
     }, {
         "name": "사건2",
-        "startDate": makeYearMonth(1901, 0),
-        "endDate": makeYearMonth(1901, 1)
+        "startDate": makeYearMonth(1911, 0),
+        "endDate": makeYearMonth(1911, 1)
     }],
     "orgDescription": "테스트 설명1"
 }
 
 task_new2 =  {
-    "startDate" : makeYearMonth(1900, 1), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
-    "endDate" : makeYearMonth(1901, 4), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
+    "startDate" : makeYearMonth(1910, 1), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
+    "endDate" : makeYearMonth(1911, 4), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
     "taskName" : taskNames[2],
     "status" : taskNames[2], // 데이터 분리 (중복데이터)
     "data" : {
         "orgName": "테스트2",
         "orgEvent": [{
             "name": "사건3",
-            "startDate": makeYearMonth(1900, 2),
-            "endDate": makeYearMonth(1900, 11)
+            "startDate": makeYearMonth(1910, 2),
+            "endDate": makeYearMonth(1910, 11)
         }, {
             "name": "사건4",
-            "startDate": makeYearMonth(1901, 0),
-            "endDate": makeYearMonth(1901, 2)
+            "startDate": makeYearMonth(1911, 0),
+            "endDate": makeYearMonth(1911, 2)
         }],
         "orgDescription": "테스트 설명1"
     }
@@ -105,9 +107,9 @@ let gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(fo
 
 
 gantt.timeDomainMode("fixed");
-gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1900,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
+gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
 gantt.tickFormat("%m")
-console.log([ d3.time.month.offset(Date.UTC(year=1900,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
+console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
 
 // changeTimeDomain(timeDomainString);
 tasks = [task_new, task_new2]
@@ -192,7 +194,7 @@ function addRandomHistory() {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    date1_year = getRandomInt(1900, 1945), date1_month = getRandomInt(0, 6)
+    date1_year = getRandomInt(1910, 1945), date1_month = getRandomInt(0, 6)
     date2_year = date1_year + getRandomInt(0, 3), date2_month = getRandomInt(7,11)
     date1 = makeYearMonth(date1_year, date1_month)
     date2 = makeYearMonth(date2_year, date2_month)
@@ -206,8 +208,8 @@ function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
 
-addTask(makeYearMonth(1900, 3), makeYearMonth(1900, 5), taskNames[0], taskNames[0])
-addTask(makeYearMonth(1900, 4), makeYearMonth(1900, 7), taskNames[1], taskNames[1])
-addTask(makeYearMonth(1900, 6), makeYearMonth(1900, 9), taskNames[0], taskNames[0])
+addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), taskNames[0], taskNames[0])
+addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), taskNames[1], taskNames[1])
+addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), taskNames[0], taskNames[0])
 
 console.log(tasks)

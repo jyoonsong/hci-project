@@ -140,7 +140,20 @@ d3.gantt = function() {
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
                     return Math.max(1,(x(d.endDate) - x(d.startDate)));
-                });
+                })
+
+            svg.select("#rect"+i).selectAll("text")
+                .data(task.data.orgEvent).enter()
+                .append('text')
+                .attr('class', 'subnode')
+                .attr("x", 0)
+                .attr("y", ".35em")
+                .attr("transform", function(d) {
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) - 10;
+                    return "translate(" + x_val + "," + y_val + ")";
+                })
+                .text('I am label');
         })
 
         svg.append("g")
@@ -213,7 +226,21 @@ d3.gantt = function() {
                 .attr("height", function(d) { return y.rangeBand() - 10; })
                 .attr("width", function(d) {
                     return Math.max(0,(x(d.endDate) - x(d.startDate)));
-                });
+                })
+
+            rect.selectAll("text")
+                .data(task.data.orgEvent).enter()
+                .append('text')
+                .attr('class', 'barsEndlineText')
+                // .attr('text-anchor', 'middle')
+                .attr("x", 0)
+                .attr("y", ".35em")
+                .attr("transform", function(d) {
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) - 10;
+                    return "translate(" + x_val + "," + y_val + ")";
+                })
+                .text('I am label');;
 
             rect.selectAll("rect")
                 .transition()
@@ -223,11 +250,23 @@ d3.gantt = function() {
                     return Math.max(0,(x(d.endDate) - x(d.startDate)));
                 });
 
-            rect.selectAll(".subnode")
+            rect.selectAll("rect.subnode")
                 .transition()
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
                     y_val = y(taskName) + 5;
+                    return "translate(" + x_val + "," + y_val + ")";
+                })
+                .attr("height", function(d) { return y.rangeBand() - 10; })
+                .attr("width", function(d) {
+                    return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                });
+
+            rect.selectAll("text.subnode")
+                .transition()
+                .attr("transform", function(d) {
+                    x_val = x(d.startDate);
+                    y_val = y(taskName) - 10;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
