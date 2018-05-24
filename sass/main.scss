@@ -29,11 +29,18 @@ $grey-7: map-get($grey, "7");
 $grey-8: map-get($grey, "8");
 $grey-9: map-get($grey, "9");
 
-$red: #FF5252;
-$red-purple: #CF547D;
-$purple: #9E56A8;
-$blue-purple: #6E58D3;
-$blue: #3D5AFE;
+$color: (
+  "red": #FF5252,
+  "red-purple": #CF547D,
+  "purple": #9E56A8,
+  "blue-purple": #6E58D3,
+  "blue": #3D5AFE
+);
+$red: map-get($color, "red");
+$red-purple: map-get($color, "red-purple");
+$purple: map-get($color, "purple");
+$blue-purple: map-get($color, "blue-purple");
+$blue: map-get($color, "blue");
 
 $landscape: 1080px !default;
 

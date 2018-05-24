@@ -37,14 +37,29 @@
     <!-- chart controls -->
     <header class="flex align-center">
       <div class="container">
-        <a class="btn" href=""><b>대한민국의 독립운동사</b></a>
+        <a class="btn" href="">
+          <img class="logo" src="img/logo.png" alt="logo">
+        </a>
         &nbsp; | &nbsp;
+        <a class="btn text-grey-5ㄱ">
+          <b>X축 시기</b>
+        </a>
         <span id="changeTime">
           <a class="btn btn-line">전체</a>
           <a class="btn btn-line">10년대</a>
           <a class="btn btn-line">20년대</a>
           <a class="btn btn-line">30년대</a>
           <a class="btn btn-line">40년대 (~1945)</a>
+        </span>
+        &nbsp; | &nbsp;
+        <a class="btn text-grey-5ㄱ">
+          <b>Y축 선택</b>
+        </a>
+        <span class="select">
+          <select id="changeAxis">
+            <option value="taskName" selected>노선</option>
+            <option value="orgPlace">장소</option>
+          </select>
         </span>
         <button type="button" onclick="addRandomHistory()"> test </button>
       </div>

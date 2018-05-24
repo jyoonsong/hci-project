@@ -9,7 +9,7 @@
                 "outputStyle": "compressed",
                 "outputDir": "../css/"
             },
-            "linting.collapsed": true,
+            "linting.collapsed": false,
             "brackets-git.gitPath": "git"
         }
     }

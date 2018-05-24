@@ -5,6 +5,10 @@ header {
   border-bottom: 1px solid $grey-2;
 }
 
+.logo {
+  height: 1.8rem;
+}
+
 .btn {
   display: inline-block;
   margin: 0 .5rem;
@@ -40,7 +44,7 @@ header {
   align-self: stretch;
   justify-content: space-between;
   margin-left: 20px;
-  padding: 2rem 15px 4rem 0;
+  padding: 2rem 2rem 4rem 0;
   background-color: $bg-color;
   .bar {
     background: $blue; /* fallback for old browsers */
@@ -55,8 +59,9 @@ header {
 .subnode {
   pointer-events: none;
   opacity: 0;
-  fill: $red;
+  fill: rgba(0,0,0,0.6);
   transition: opacity .2s linear;
+  font-size: .75em;
 }
 
 .node:hover ~ .subnode {

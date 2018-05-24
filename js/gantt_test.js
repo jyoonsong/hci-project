@@ -1,31 +1,31 @@
 
-let taskNames = [ "FarRight", "CenterRight", "Center", "CenterLeft", "FarLeft" ];
+let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
 
 let tasks = [
     {
         "startDate":new Date("Sun Dec 09 01:36:45 EST 2012"),
         "endDate":new Date("Sun Dec 09 02:36:45 EST 2012"),
-        "taskName":"E Job",
+        "color":"E Job",
         "status":"RUNNING"
     }
 ];
 
 let taskStatus = {
-    "FarRight" : "far-right",
-    "CenterRight" : "mid-right",
-    "Center" : "mid",
-    "CenterLeft" : "mid-left",
-    "FarLeft" : "far-left"
+    "FarRight" : "blue",
+    "MidRight" : "blue-purple",
+    "Mid" : "purple",
+    "MidLeft" : "red-purple",
+    "FarLeft" : "red"
 };
 
 let taskSkull = {
     "startDate" : makeYearMonth(0, 0), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
     "endDate" : makeYearMonth(0, 0), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-    "taskName" : taskNames[0], // 성향
-    "status" : taskNames[0], // 성향별색상 데이터 분리 (중복데이터)
+    "color" : colors[0], // 성향
+    "status" : taskStatus[0], // 성향별색상 데이터 분리 (중복데이터)
     "location" : '',
     "data" : {
-        "orgName": "name",
+        "orgName": "color",
         "orgEvent": [{
             "name": "",
             "startDate": "",
@@ -54,8 +54,8 @@ let PossibleTimeDomain = [
 task_new = taskSkull
 task_new["startDate"] = makeYearMonth(1910, 0)
 task_new["endDate"] = makeYearMonth(1911, 2)
-task_new["status"] = taskNames[4]
-task_new["taskName"] = taskNames[4]
+task_new["status"] = colors[4]
+task_new["color"] = colors[4]
 task_new["data"] = {
     "orgName": "테스트1",
     "orgEvent": [{
@@ -73,8 +73,8 @@ task_new["data"] = {
 task_new2 =  {
     "startDate" : makeYearMonth(1910, 1), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
     "endDate" : makeYearMonth(1911, 4), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-    "taskName" : taskNames[2],
-    "status" : taskNames[2], // 데이터 분리 (중복데이터)
+    "color" : colors[2],
+    "status" : colors[2], // 데이터 분리 (중복데이터)
     "data" : {
         "orgName": "테스트2",
         "orgEvent": [{
@@ -103,7 +103,7 @@ task_new2 =  {
 let format = "%H:%M";
 let timeDomainString = "1day";
 
-let gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
+let gantt = d3.gantt().taskTypes(colors).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
 
 
 gantt.timeDomainMode("fixed");
@@ -171,11 +171,11 @@ function getEndDate() {
 }
 
 let i = 0
-function addTask(startMonth, endMonth, taskName = taskNames[0], status = "CenterRight") {
+function addTask(startMonth, endMonth, color = colors[0], status = "CenterRight") {
     tasks.push({
         "startDate" : startMonth, //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
         "endDate" : endMonth, // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-        "taskName" : taskName,
+        "color" : color,
         "status" : status,
         "data" : {
             "orgName": "test1",
@@ -201,15 +201,15 @@ function addRandomHistory() {
 
     i = getRandomInt(0, 5)
 
-    addTask(date1, date2, taskNames[i], taskStatus[taskNames[i]])
+    addTask(date1, date2, colors[i], taskStatus[colors[i]])
 }
 
 function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
 
-addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), taskNames[0], taskNames[0])
-addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), taskNames[1], taskNames[1])
-addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), taskNames[0], taskNames[0])
+addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
+addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
+addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
 
 console.log(tasks)

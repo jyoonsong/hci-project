@@ -52,7 +52,6 @@ aside {
     padding: 0.2em 0;
 }
 
-
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -75,11 +74,13 @@ small { font-size: 75%; color: $grey-6 }
     color: map-get($grey, #{$i});
   }
 }
-.text-blue {
-  color: $blue;
-}
-.text-red {
-  color: $red;
+@each $c in "red", "red-purple", "purple", "blue-purple", "blue" {
+  .#{$c} {
+    fill: map-get($color, #{$c});
+  }
+  .text-#{$c} {
+    color: map-get($color, #{$c});
+  }
 }
   
 /* ==========================================================================
@@ -114,14 +115,18 @@ small { font-size: 75%; color: $grey-6 }
 }
 
 .my-0 {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 .mx-0 {
-  margin-right: 0;
-  margin-left: 0;
+  @extend .ml-0, .mr-0;
 }
-
+.ml-0 {
+  margin-left: 0 !important;
+}
+.mr-0 {
+  margin-right: 0 !important;
+}
 .center-x {
   margin-left: auto;
   margin-right: auto;

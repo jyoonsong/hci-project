@@ -30,11 +30,11 @@ d3.gantt = function() {
     let tickFormat = "%H:%M";
 
     let keyFunction = function(d) {
-        return d.startDate + d.taskName + d.endDate;
+        return d.startDate + d.color + d.endDate;
     };
 
     let rectTransform = function(d) {
-        return "translate(" + x(d.startDate) + "," + y(d.taskName) + ")";
+        return "translate(" + x(d.startDate) + "," + y(d.color) + ")";
     };
 
     let x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
@@ -120,21 +120,18 @@ d3.gantt = function() {
             });
 
         tasks.forEach(function (task, i){
-            taskName = task.taskName
-            console.log(taskName)
+            color = task.color
+            console.log(color)
             svg.select("#rect"+i).selectAll(".subnode")
                 .data(task.data.orgEvent).enter()
                 .append("rect")
                 .attr("rx", 5)
                 .attr("ry", 5)
-                .attr("class", function(d){
-                    // if(taskStatus[d.status] == null){ return "bar";}
-                    return "subnode " + taskStatus[d.status];
-                }).transition()
+                .attr("class", "subnode").transition()
                 .attr("y", 0)
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) + 5;
+                    y_val = y(color) + 5;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
@@ -150,7 +147,7 @@ d3.gantt = function() {
                 .attr("y", ".35em")
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) - 10;
+                    y_val = y(color) - 10;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .text('I am label');
@@ -175,6 +172,7 @@ d3.gantt = function() {
 
         let ganttChartGroup = svg.select(".gantt-chart");
         let rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
+      
         rect.enter()
             .append("g").attr("id", function(d, i) { return "rect"+i; })
             .insert("rect",":first-child")
@@ -203,7 +201,7 @@ d3.gantt = function() {
         //     });
 
         tasks.forEach(function (task, i){
-            taskName = task.taskName
+            color = task.color
 
             rect = svg.select("#rect"+i)
 
@@ -212,15 +210,11 @@ d3.gantt = function() {
                 .append("rect")
                 .attr("rx", 5)
                 .attr("ry", 5)
-                
-                .attr("class", function(d){
-                    // if(taskStatus[d.status] == null){ return "bar";}
-                    return "subnode " + taskStatus[d.status];
-                }).transition()
+                .attr("class", "subnode").transition()
                 .attr("y", 0)
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) + 5;
+                    y_val = y(color) + 5;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
@@ -237,7 +231,7 @@ d3.gantt = function() {
                 .attr("y", ".35em")
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) - 10;
+                    y_val = y(color) - 10;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .text('I am label');;
@@ -254,7 +248,7 @@ d3.gantt = function() {
                 .transition()
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) + 5;
+                    y_val = y(color) + 5;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })
@@ -266,7 +260,7 @@ d3.gantt = function() {
                 .transition()
                 .attr("transform", function(d) {
                     x_val = x(d.startDate);
-                    y_val = y(taskName) - 10;
+                    y_val = y(color) - 10;
                     return "translate(" + x_val + "," + y_val + ")";
                 })
                 .attr("height", function(d) { return y.rangeBand() - 10; })

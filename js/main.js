@@ -9,28 +9,22 @@ let Index = ( function () {
       document.querySelectorAll("#changeTime a.btn")
     );
     $timeBtn.forEach(callChangeTime);
-
+    setActive($timeBtn, 0);
   }
   
   function callChangeTime(ele, index, $timeBtn) {
     ele.addEventListener("click", function() {
       changeTime(index);
-      
-      for (i = 0; i < $timeBtn.length; i++) {
-        if (i != index)
-          $timeBtn[i].classList.remove("active");
-      }
-      
-      ele.classList.add("active");
+      setActive($timeBtn, index);
     })
   }
   
-  function setActive(ele, i, index) {
-    console.log("setActive" + i);
-    if (i == index)
-      ele.classList.add("active");
-    else
-      ele.classList.remove("active");
+  function setActive($arr, index) {
+    for (i = 0; i < $timeBtn.length; i++)
+        if (i != index)
+          $timeBtn[i].classList.remove("active");
+      
+    $timeBtn[index].classList.add("active");
   }
 
   function setCursor(cursor) {

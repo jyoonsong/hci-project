@@ -107,3 +107,37 @@ input:disabled:hover {
 ul {
   list-style: none;
 }
+
+.select {
+  display: inline-block;
+  border: 1px solid #e9ecef;
+  border-radius: .5rem;
+  min-width: 120px;
+  position: relative;
+  margin: 0 .5rem;
+  &::after {
+    content: "\25bc";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    right: 10px;
+    line-height: 300%;
+    font-size: 11px;
+  }
+  select {
+    color: $grey-8;
+    cursor: pointer;
+    padding: .6rem 1rem;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: .85rem;
+    line-height: 1.0;
+    height: 100%;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
