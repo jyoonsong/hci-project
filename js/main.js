@@ -43,7 +43,6 @@ let Index = ( function () {
     // parse values
     let vals = ["name", "date", "description"];
     vals.forEach( function(val) {
-      console.log(document.getElementById("des-" + val));
       document.getElementById("des-" + val).innerHTML = node.getAttribute("data-" + val);
     });
     // parse events
