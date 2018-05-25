@@ -50,7 +50,8 @@ let Index = ( function () {
     let eventBox = document.getElementById("des-events");
     eventBox.innerHTML ="";
     events.forEach( function(e) {
-      eventBox += ("<span class='circle'>" + e + "</span>")
+      if (e.length > 0)
+        eventBox.innerHTML += ("<span class='event flex flex-column justify-center'>" + e + "</span>");
     })
   }
 

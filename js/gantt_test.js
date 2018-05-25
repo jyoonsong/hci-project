@@ -171,7 +171,7 @@ function getEndDate() {
 }
 
 let i = 0
-function addTask(startMonth, endMonth, color = colors[0], status = "CenterRight") {
+function addTask(startMonth, endMonth, color = colors[0], status = "MidRight") {
     tasks.push({
         "startDate" : startMonth, //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
         "endDate" : endMonth, // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
