@@ -55,9 +55,6 @@ header {
     margin: 10px 0;
   }
 }
-g, .node, .subnode {
-  transform: transition(0,0);
-}
 .node:active,
 .node:focus,
 .node:hover {

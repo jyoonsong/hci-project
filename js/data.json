@@ -2,22 +2,27 @@
   {
     "startDate" : "1930/03",
     "endDate" : "1935/03",
-    "color" : "MidRight",
-    "status" : "MidRight",
+    "color" : "FarRight",
+    "status" : "FarRight",
     "location" : "중국관내",
     "data" : {
-      "orgName": "조선혁명군",
-      "orgLeader": "양세봉",
+      "orgName": "한국독립군",
+      "orgLeader": "지청천",
       "orgEvent": [
         {
-          "name": "영릉가 전투",
+          "name": "쌍성보전투",
           "startDate": "1932/03",
           "endDate": "1932/12"
         },
         {
-          "name": "흥경성 전투",
-          "startDate": "1933/06",
+          "name": "대전자령전투",
+          "startDate": "1933/03",
           "endDate": "1933/12"
+        },
+        {
+          "name": "일본의 만주 장악",
+          "startDate": "1934/03",
+          "endDate": "1934/12"
         }
       ],
       "orgDescription": "테스트 설명1"
@@ -25,23 +30,86 @@
   },
   {
     "startDate" : "1930/03",
-    "endDate" : "1935/12",
-    "color" : "MidLeft",
-    "status" : "MidLeft",
-    "location" : "연해주",
+    "endDate" : "1935/03",
+    "color" : "FarLeft",
+    "status" : "FarLeft",
+    "location" : "중국관내",
     "data" : {
-      "orgName": "테스트2",
-      "orgLeader": "김구",
+      "orgName": "조선혁명군",
+      "orgLeader": "양세봉",
       "orgEvent": [
         {
-          "name": "사건3",
-          "startDate": "1930/03",
-          "endDate": "1930/12"
+          "name": "영릉가 흥경성전투",
+          "startDate": "1932/03",
+          "endDate": "1932/12"
         },
         {
-          "name": "사건4",
+          "name": "신개령전투",
+          "startDate": "1933/06",
+          "endDate": "1934/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1923/01",
+    "endDate" : "1934/12",
+    "color" : "MidLeft",
+    "status" : "MidLeft",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "의열단",
+      "orgLeader": "김원봉",
+      "orgEvent": [
+        {
+          "name": "김익상의 조선총독부 폭파",
+          "startDate": "1921/03",
+          "endDate": "1921/12"
+        },
+        {
+          "name": "조선혁명선언",
+          "startDate": "1923/03",
+          "endDate": "1923/12"
+        },
+        {
+          "name": "나석주의 동척 및 조선식산은행 폭파",
+          "startDate": "1926/03",
+          "endDate": "1926/12"
+        },
+        {
+          "name": "공개적 합법적 정당으로 노선 변화",
+          "startDate": "1927/03",
+          "endDate": "1927/12"
+        },
+        {
+          "name": "조선혁명간부학교 설립",
           "startDate": "1932/03",
-          "endDate": "1933/12"
+          "endDate": "1934/01"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1936/03",
+    "endDate" : "1940/03",
+    "color" : "FarLeft",
+    "status" : "FarLeft",
+    "location" : "만주",
+    "data" : {
+      "orgName": "동북항일연군",
+      "orgLeader": "김일성",
+      "orgEvent": [
+        {
+          "name": "조국광복회",
+          "startDate": "1936/04",
+          "endDate": "1936/12"
+        },
+        {
+          "name": "보천보전투",
+          "startDate": "1937/03",
+          "endDate": "1937/12"
         }
       ],
       "orgDescription": "테스트 설명1"

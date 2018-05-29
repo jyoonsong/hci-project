@@ -235,7 +235,7 @@ d3.gantt = function() {
           .attr("data-events", function(d) {
             let events = "";
             d.data.orgEvent.forEach( function(e, i) {
-              events += (e.name + "<br>" + dateFormat(e.startDate, e.endDate) + ",");
+              events += ("<b>" + e.name + "</b><small>" + dateFormat(e.startDate, e.endDate) + "</small>,");
             });
             if (d.data.orgEvent.length > 0)
               events = events.slice(0, -1);

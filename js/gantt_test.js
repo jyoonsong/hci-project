@@ -14,30 +14,60 @@ let taskStatus = {
 };
 
 let task_data = {
-      "orgName": "테스트2",
+      "orgName": "대한민국임시정부",
       "orgLeader": "김구",
       "orgEvent": [
         {
-          "name": "사건3",
-          "startDate": makeYearMonth(1910, 3),
-          "endDate": makeYearMonth(1911, 12)
+          "name": "대한민국 임시헌장",
+          "startDate": makeYearMonth(1919, 4),
+          "endDate": makeYearMonth(1919, 6)
         },
         {
-          "name": "사건4",
-          "startDate": makeYearMonth(1913, 5),
-          "endDate": makeYearMonth(1914, 1)
+          "name": "이승만의 위임통치청원",
+          "startDate": makeYearMonth(1920, 1),
+          "endDate": makeYearMonth(1920, 12)
+        },
+        {
+          "name": "국민대표회의",
+          "startDate": makeYearMonth(1923, 1),
+          "endDate": makeYearMonth(1923, 12)
+        },
+        {
+          "name": "이승만 탄핵",
+          "startDate": makeYearMonth(1925, 1),
+          "endDate": makeYearMonth(1925, 12)
+        },
+        {
+          "name": "한인애국단",
+          "startDate": makeYearMonth(1932, 1),
+          "endDate": makeYearMonth(1933, 12)
+        },
+        {
+          "name": "이동(상하이~항저우)",
+          "startDate": makeYearMonth(1934, 1),
+          "endDate": makeYearMonth(1940, 12)
+        },
+        {
+          "name": "대한민국건국강령",
+          "startDate": makeYearMonth(1941, 1),
+          "endDate": makeYearMonth(1941, 12)
+        },
+        {
+          "name": "주석 및 부수적제 개헌",
+          "startDate": makeYearMonth(1944, 1),
+          "endDate": makeYearMonth(1944, 12)
         }
       ],
-      "orgDescription": "테스트 설명1"
+      "orgDescription": "1919년 3월, 3.1운동이라는 거대한 움직임의 영향으로 설립되었다. 연해주에서는 손병희가 이끄는 전로한족회중앙총회가, 서울에서는 이승만이 이끄는 한성정부가, 상하이에서는 신한청년당이 중심이 된 대한민국 임시정부가 구성된 것이다. 상하이에서는 대한민국 임시헌장을 발표하였다."
     };
 
 var tasks = [
     {
-      "startDate" : makeYearMonth(1910, 2), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
-      "endDate" : makeYearMonth(1914, 5), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-      "color" : colors[3], // 성향
-      "status" : colors[3], // 성향별색상 데이터 분리 (중복데이터)
-      "location" : "국내",
+      "startDate" : makeYearMonth(1919, 3), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
+      "endDate" : makeYearMonth(1945, 12), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
+      "color" : colors[2], // 성향
+      "status" : colors[2], // 성향별색상 데이터 분리 (중복데이터)
+      "location" : "중국관내",
       "data" : task_data
     }
 ];
@@ -110,10 +140,6 @@ d3.json("js/data.json", function(error, data) {
     addTask(data[i]);
   }
 });
-//
-//addTask(makeYearMonth(1910, 3), makeYearMonth(1915, 5), colors[0], task_data);
-//addTask(makeYearMonth(1910, 4), makeYearMonth(1913, 7), colors[1], task_data);
-//addTask(makeYearMonth(1910, 6), makeYearMonth(1914, 9), colors[2], task_data);
 
 console.log(tasks);
 
@@ -179,7 +205,6 @@ function getEndDate() {
     return lastEndDate;
 }
 
-let i = 0
 function addTask(task) {
     tasks.push(task);
 
@@ -188,21 +213,6 @@ function addTask(task) {
     Index.init();
 
 };
-
-function addRandomHistory() {
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    date1_year = getRandomInt(1910, 1945), date1_month = getRandomInt(0, 6)
-    date2_year = date1_year + getRandomInt(0, 3), date2_month = getRandomInt(7,11)
-    date1 = makeYearMonth(date1_year, date1_month)
-    date2 = makeYearMonth(date2_year, date2_month)
-
-    i = getRandomInt(0, 5)
-
-    addTask(date1, date2, colors[i], taskStatus[colors[i]])
-}
 
 function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
