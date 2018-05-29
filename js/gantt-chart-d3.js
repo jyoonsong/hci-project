@@ -24,6 +24,7 @@ d3.gantt = function() {
   let timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
   let taskTypes = [];
   let taskStatus = [];
+  let hideText = false
   let currentTaskMode = '';
   let taskAvailableMode = ['Pos', 'Color'];
   let height = document.body.clientWidth - margin.top - margin.bottom - 5;
@@ -54,6 +55,7 @@ d3.gantt = function() {
   };
 
   let x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
+  let x_text = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
 
   let y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
 
@@ -86,8 +88,9 @@ d3.gantt = function() {
   };
 
   let initAxis = function() {
-      x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 5000 ]).clamp(true);
+      x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 1800 ]).clamp(true);
       y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
+      x_text = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(false);
 
       xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat))
           .tickSize(5).tickPadding(8).ticks(d3.time.months);
@@ -180,11 +183,16 @@ d3.gantt = function() {
           svg.select("#rect"+i).selectAll("text")
               .data(task.data.orgEvent).enter()
               .append('text')
-              .attr('class', 'subnode txt')
+              .attr('class', function() {
+                  if (hideText)
+                      return 'subnode txt hidden'
+                  else
+                      return 'subnode txt'
+              })
               .attr("x", 0)
               .attr("y", ".35em")
               .attr("transform", function(d) {
-                  x_val = x(d.startDate);
+                  x_val = x_text(d.startDate);
                   y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
@@ -283,12 +291,17 @@ d3.gantt = function() {
           rect.selectAll("text")
               .data(task.data.orgEvent).enter()
               .append('text')
-              .attr('class', 'subnode txt')
+              .attr('class', function() {
+                  if (hideText)
+                      return 'subnode txt hidden'
+                  else
+                      return 'subnode txt'
+              })
               // .attr('text-anchor', 'middle')
               .attr("x", 0)
               .attr("y", ".35em")
               .attr("transform", function(d) {
-                  x_val = x(d.startDate);
+                  x_val = x_text(d.startDate);
                   y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
@@ -318,8 +331,14 @@ d3.gantt = function() {
 
           rect.selectAll("text.subnode")
               .transition()
+              .attr('class', function() {
+                  if (hideText)
+                      return 'subnode txt hidden'
+                  else
+                      return 'subnode txt'
+              })
               .attr("transform", function(d) {
-                  x_val = x(d.startDate);
+                  x_val = x_text(d.startDate);
                   y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
@@ -415,6 +434,13 @@ d3.gantt = function() {
       selector = value;
       return gantt;
   };
+
+  gantt.hideText = function(value) {
+      if (!arguments.length)
+          return hideText;
+      hideText = value
+      return gantt
+  }
 
   return gantt;
 };

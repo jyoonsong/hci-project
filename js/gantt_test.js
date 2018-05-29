@@ -105,7 +105,7 @@ let timeDomainString = "1day";
  * Draw Chart
  */
 
-let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
+let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(1800);
 
 gantt.timeDomainMode("fixed");
 gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
@@ -154,6 +154,9 @@ function changeTime(idx) {
 
     gantt.timeDomain([ d3.time.month.offset(PossibleTimeDomain[idx]['startDate'], 0),
         PossibleTimeDomain[idx]['endDate'] ]);
+
+    gantt.hideText(idx == 0)
+    console.log(idx, gantt.hideText)
     gantt.redraw(tasks)
 }
 
