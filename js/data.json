@@ -29,6 +29,78 @@
     }
   },
   {
+    "startDate" : "1935/02",
+    "endDate" : "1937/12",
+    "color" : "Mid",
+    "status" : "Mid",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "민족혁명당",
+      "orgLeader": "김원봉",
+      "orgEvent": [
+        {
+          "name": "좌우5당통합",
+          "startDate": "1935/03",
+          "endDate": "1935/12"
+        },
+        {
+          "name": "우파 탈당",
+          "startDate": "1936/03",
+          "endDate": "1937/04"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1937/12",
+    "endDate" : "1945/12",
+    "color" : "MidLeft",
+    "status" : "MidLeft",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "조선민족혁명당",
+      "orgLeader": "김원봉",
+      "orgEvent": [
+        {
+          "name": "조선의용대",
+          "startDate": "1938/03",
+          "endDate": "1940/01"
+        },
+        {
+          "name": "화북지대 이탈",
+          "startDate": "1941/01",
+          "endDate": "1942/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1937/12",
+    "endDate" : "1945/12",
+    "color" : "MidLeft",
+    "status" : "MidLeft",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "조선민족혁명당",
+      "orgLeader": "김원봉",
+      "orgEvent": [
+        {
+          "name": "조선의용대",
+          "startDate": "1938/03",
+          "endDate": "1940/01"
+        },
+        {
+          "name": "화북지대 이탈",
+          "startDate": "1941/01",
+          "endDate": "1942/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
     "startDate" : "1919/01",
     "endDate" : "1934/12",
     "color" : "MidLeft",
@@ -110,6 +182,49 @@
           "name": "보천보전투",
           "startDate": "1937/03",
           "endDate": "1937/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1941/01",
+    "endDate" : "1941/12",
+    "color" : "FarLeft",
+    "status" : "FarLeft",
+    "location" : "화북",
+    "data" : {
+      "orgName": "조선의용대화북지대",
+      "orgLeader": "김두봉",
+      "orgEvent": [
+        {
+          "name": "호가장전투",
+          "startDate": "1941/02",
+          "endDate": "1941/11"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1942/01",
+    "endDate" : "1944/12",
+    "color" : "FarLeft",
+    "status" : "FarLeft",
+    "location" : "화북",
+    "data" : {
+      "orgName": "조선독립동맹",
+      "orgLeader": "김두봉",
+      "orgEvent": [
+        {
+          "name": "조선의용군",
+          "startDate": "1942/02",
+          "endDate": "1942/11"
+        },
+        {
+          "name": "팔로군 연합",
+          "startDate": "1943/02",
+          "endDate": "1944/11"
         }
       ],
       "orgDescription": "테스트 설명1"
