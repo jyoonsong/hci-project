@@ -178,7 +178,7 @@ function addTask(task) {
     tasks.push(task);
 
     // changeTimeDomain(timeDomainString);
-    // gantt.redraw(tasks);
+    gantt.redraw(tasks);
 };
 
 function addRandomHistory() {
@@ -208,3 +208,4 @@ console.log(tasks)
 // tasks.push(task_new)
 // tasks.push(task_new2)
 gantt(tasks);
+changeTime(0)

@@ -282,7 +282,9 @@ d3.gantt = function() {
                   y_val = y(color) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
-              .text('I am label');;
+              .text(function (d) {
+                  return d.name;
+              });
 
           rect.selectAll("rect")
               .attr("transform", rectTransform)
