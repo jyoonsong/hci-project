@@ -109,7 +109,7 @@ d3.gantt = function() {
           .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
       // node
-      svg.selectAll(".chart")
+      node = svg.selectAll(".chart")
           .data(tasks, keyFunction).enter()
           .append("g").attr("id", function(d, i) { return "rect" + i })
           .append("rect")
@@ -170,7 +170,7 @@ d3.gantt = function() {
           svg.select("#rect"+i).selectAll("text")
               .data(task.data.orgEvent).enter()
               .append('text')
-              .attr('class', 'subnode')
+              .attr('class', 'subnode txt')
               .attr("x", 0)
               .attr("y", ".35em")
               .attr("transform", function(d) {
@@ -178,7 +178,9 @@ d3.gantt = function() {
                   y_val = y(color) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
-              .text('I am label');
+              .text(function (d) {
+                  return d.name;
+              });
       })
 
       svg.append("g")
@@ -271,7 +273,7 @@ d3.gantt = function() {
           rect.selectAll("text")
               .data(task.data.orgEvent).enter()
               .append('text')
-              .attr('class', 'barsEndlineText')
+              .attr('class', 'subnode txt')
               // .attr('text-anchor', 'middle')
               .attr("x", 0)
               .attr("y", ".35em")

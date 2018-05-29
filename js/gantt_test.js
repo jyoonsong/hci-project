@@ -22,7 +22,8 @@ let taskSkull = {
     "startDate" : makeYearMonth(0, 0), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
     "endDate" : makeYearMonth(0, 0), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
     "color" : colors[0], // 성향
-    "status" : taskStatus[0], // 성향별색상 데이터 분리 (중복데이터)
+    "status" : taskStatus[0], // 성향별색상 데이터 분리 (중복데이터),
+
     "location" : '',
     "data" : {
         "orgName": "color",
@@ -112,8 +113,6 @@ gantt.tickFormat("%m")
 console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
 
 // changeTimeDomain(timeDomainString);
-tasks = [task_new, task_new2]
-gantt(tasks);
 // gantt()
 
 function changeTime(idx) {
@@ -186,7 +185,6 @@ function addTask(startMonth, endMonth, color = colors[0], status = "MidRight") {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
-
 };
 
 function addRandomHistory() {
@@ -208,8 +206,12 @@ function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
 
+console.log(tasks)
+
+tasks = []
 addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
 addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
 addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
-
-console.log(tasks)
+tasks.push(task_new)
+tasks.push(task_new2)
+gantt(tasks);
