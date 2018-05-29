@@ -85,7 +85,7 @@ console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(yea
 //gantt(tasks);
 gantt(tasks);
 
-d3.json("https://raw.githubusercontent.com/jyoonsong/hci-project/master/js/data.json", function(error, data) {
+d3.json("js/data.json", function(error, data) {
   if (error)
     throw error;
   for (let i = 0; i < data.length; i++) {
@@ -178,6 +178,7 @@ function addTask(task) {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
+    Index.init();
 
 };
 
