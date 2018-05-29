@@ -3,6 +3,7 @@
  */
 
 let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
+let locations = [ "중국관내", "연해주", "국내", "만주", "화북" ];
 
 let taskStatus = {
     "FarRight" : "blue",
@@ -60,7 +61,7 @@ let task_data = {
       "orgDescription": "1919년 3월, 3.1운동이라는 거대한 움직임의 영향으로 설립되었다. 연해주에서는 손병희가 이끄는 전로한족회중앙총회가, 서울에서는 이승만이 이끄는 한성정부가, 상하이에서는 신한청년당이 중심이 된 대한민국 임시정부가 구성된 것이다. 상하이에서는 대한민국 임시헌장을 발표하였다."
     };
 
-let tasks = [
+var tasks = [
     {
       "startDate" : makeYearMonth(1919, 3), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
       "endDate" : makeYearMonth(1945, 12), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
@@ -104,16 +105,19 @@ let timeDomainString = "1day";
  * Draw Chart
  */
 
-let gantt = d3.gantt().taskTypes(colors).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
+let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
 
 gantt.timeDomainMode("fixed");
 gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
 gantt.tickFormat("%m")
 console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
 
-//changeTimeDomain(timeDomainString);
-//gantt(tasks);
-gantt(tasks);
+// changeTimeDomain(timeDomainString);
+// tasks = [task_new, task_new2]
+// gantt(tasks);
+// gantt()
+
+tasks = []
 
 d3.json("js/data.json", function(error, data) {
   if (error)
@@ -125,8 +129,8 @@ d3.json("js/data.json", function(error, data) {
     
     data[i].startDate = makeYearMonth(start[0], start[1]);
     data[i].endDate = makeYearMonth(end[0], end[1]);
-    
-    data[i].data.orgEvent.forEach( function(e) { 
+
+    data[i].data.orgEvent.forEach( function(e) {
       let eventStart = e.startDate.split("/");
       let eventEnd = e.endDate.split("/");
       e.startDate = makeYearMonth(eventStart[0], eventStart[1]);
@@ -151,6 +155,11 @@ function changeTime(idx) {
     gantt.timeDomain([ d3.time.month.offset(PossibleTimeDomain[idx]['startDate'], 0),
         PossibleTimeDomain[idx]['endDate'] ]);
     gantt.redraw(tasks)
+}
+
+function swapAxisModeInto(mode) {
+    _taskTypes = (mode == 'Pos') ? locations : colors
+    gantt.currentTaskMode(mode).taskTypes(_taskTypes).redraw(tasks)
 }
 
 function changeTimeDomain(timeDomainString) {
@@ -208,3 +217,13 @@ function addTask(task) {
 function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
+
+console.log(tasks)
+// tasks = []
+// addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
+// addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
+// addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
+// tasks.push(task_new)
+// tasks.push(task_new2)
+gantt(tasks);
+changeTime(0)

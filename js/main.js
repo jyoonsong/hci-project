@@ -24,7 +24,12 @@ let Index = ( function () {
       setActive($timeBtn, index);
     })
   }
-  
+
+  document.querySelector("#changeAxis").onchange = function (e) {
+      changedMode = (this.value == 'taskName') ? 'Color' : 'Pos'
+      swapAxisModeInto(changedMode)
+  }
+
   function setActive($arr, index) {
     for (let i = 0; i < $timeBtn.length; i++)
         if (i != index)
