@@ -141,7 +141,6 @@ d3.gantt = function() {
           })
           // transform
           .attr("transform", rectTransform)
-          .transition()
           .attr("height", function(d) { return y.rangeBand(); })
           .attr("width", function(d) {
               return Math.max(1,(x(d.endDate) - x(d.startDate)));
@@ -155,13 +154,14 @@ d3.gantt = function() {
               .append("rect")
               .attr("rx", 5)
               .attr("ry", 5)
-              .attr("class", "subnode").transition()
+              .attr("class", "subnode")
               .attr("y", 0)
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
                   y_val = y(color) + 5;
                   return "translate(" + x_val + "," + y_val + ")";
               })
+              .transition()
               .attr("height", function(d) { return y.rangeBand() - 10; })
               .attr("width", function(d) {
                   return Math.max(1,(x(d.endDate) - x(d.startDate)));

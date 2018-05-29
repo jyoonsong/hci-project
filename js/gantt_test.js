@@ -13,26 +13,30 @@ let taskStatus = {
 };
 
 let task_data = {
-        "orgName": "orgName",
-        "orgEvent": [{
-            "name": "event1",
-            "startDate": "",
-            "endDate": ""
-          }, {
-              "name": "",
-              "startDate": "",
-              "endDate": ""
-          }],
-        "orgDescription": ""
-      };
+      "orgName": "테스트2",
+      "orgLeader": "김구",
+      "orgEvent": [
+        {
+          "name": "사건3",
+          "startDate": makeYearMonth(1910, 3),
+          "endDate": makeYearMonth(1911, 12)
+        },
+        {
+          "name": "사건4",
+          "startDate": makeYearMonth(1913, 5),
+          "endDate": makeYearMonth(1914, 1)
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    };
 
 let tasks = [
     {
-      "startDate" : makeYearMonth(0, 0), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
-      "endDate" : makeYearMonth(0, 0), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-      "color" : colors[0], // 성향
-      "status" : taskStatus[0], // 성향별색상 데이터 분리 (중복데이터)
-      "location" : '',
+      "startDate" : makeYearMonth(1910, 2), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
+      "endDate" : makeYearMonth(1914, 5), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
+      "color" : colors[3], // 성향
+      "status" : colors[3], // 성향별색상 데이터 분리 (중복데이터)
+      "location" : "국내",
       "data" : task_data
     }
 ];
@@ -81,7 +85,7 @@ console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(yea
 //gantt(tasks);
 gantt(tasks);
 
-d3.json("https://raw.githubusercontent.com/jyoonsong/hci-project/master/js/data.json", function(error, data) {
+d3.json("js/data.json", function(error, data) {
   if (error)
     throw error;
   for (let i = 0; i < data.length; i++) {
@@ -174,6 +178,7 @@ function addTask(task) {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
+    Index.init();
 
 };
 
