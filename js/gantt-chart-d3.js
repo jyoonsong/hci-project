@@ -271,7 +271,7 @@ d3.gantt = function() {
           rect.selectAll("text")
               .data(task.data.orgEvent).enter()
               .append('text')
-              .attr('class', 'barsEndlineText')
+              .attr('class', 'subnode')
               // .attr('text-anchor', 'middle')
               .attr("x", 0)
               .attr("y", ".35em")
