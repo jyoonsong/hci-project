@@ -86,6 +86,8 @@ let PossibleTimeDomain = [
 let format = "%H:%M";
 let timeDomainString = "1day";
 
+let width = (document.body.offsetWidth < 1200) ? 1200 : document.body.offsetWidth;
+
 /*
  * Sort Data
  */
@@ -105,7 +107,7 @@ let timeDomainString = "1day";
  * Draw Chart
  */
 
-let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(1800);
+let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80);
 
 gantt.timeDomainMode("fixed");
 gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);

@@ -31,16 +31,17 @@ let Index = ( function () {
   }
 
   function setActive($arr, index) {
-    for (let i = 0; i < $timeBtn.length; i++)
+    for (let i = 0; i < $arr.length; i++)
         if (i != index)
-          $timeBtn[i].classList.remove("active");
+          $arr[i].classList.remove("active");
       
-    $timeBtn[index].classList.add("active");
+    $arr[index].classList.add("active");
   }
   
   function callShowContent(node, i, $nodes) {
     node.addEventListener("click", function() {
       showContent(this);
+      setActive($nodes, i);
     });
   }
   

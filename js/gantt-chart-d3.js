@@ -15,7 +15,7 @@ d3.gantt = function() {
       top : 20,
       right : 40,
       bottom : 40,
-      left : 20
+      left : 15
   };
 
   let selector = '#chart';
@@ -28,7 +28,8 @@ d3.gantt = function() {
   let currentTaskMode = '';
   let taskAvailableMode = ['Pos', 'Color'];
   let height = document.body.clientWidth - margin.top - margin.bottom - 5;
-  let width = document.body.clientWidth - margin.right - margin.left-5;
+//  let width = document.body.clientWidth - margin.right - margin.left - 5;
+  let width = (document.body.offsetWidth < 1080) ? 1080 : document.body.offsetWidth - margin.right - margin.left - 30;
 
   let tickFormat = "%H:%M";
 
@@ -88,7 +89,7 @@ d3.gantt = function() {
   };
 
   let initAxis = function() {
-      x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, 1800 ]).clamp(true);
+      x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
       y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
       x_text = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(false);
 
@@ -285,7 +286,7 @@ d3.gantt = function() {
               .transition()
               .attr("height", function(d) { return y.rangeBand() - 10; })
               .attr("width", function(d) {
-                  return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                  return Math.max(0.8,(x(d.endDate) - x(d.startDate)));
               })
 
           rect.selectAll("text")
@@ -314,7 +315,7 @@ d3.gantt = function() {
               .transition()
               .attr("height", function(d) { return y.rangeBand(); })
               .attr("width", function(d) {
-                  return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                  return Math.max(0.8,(x(d.endDate) - x(d.startDate)));
               });
 
           rect.selectAll("rect.subnode")
@@ -326,7 +327,7 @@ d3.gantt = function() {
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })
               .attr("width", function(d) {
-                  return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                  return Math.max(0.8,(x(d.endDate) - x(d.startDate)));
               });
 
           rect.selectAll("text.subnode")
@@ -344,7 +345,7 @@ d3.gantt = function() {
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })
               .attr("width", function(d) {
-                  return Math.max(0,(x(d.endDate) - x(d.startDate)));
+                  return Math.max(0.8,(x(d.endDate) - x(d.startDate)));
               });
 
       })
