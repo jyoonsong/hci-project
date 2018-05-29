@@ -111,15 +111,12 @@ let gantt = d3.gantt().taskTypes(colors).currentTaskMode('Color').taskStatus(tas
 
 gantt.timeDomainMode("fixed");
 gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
-gantt.tickFormat("%m")
-console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
+gantt.tickFormat("%m");
 
 // changeTimeDomain(timeDomainString);
 // tasks = [task_new, task_new2]
 // gantt(tasks);
 // gantt()
-
-tasks = []
 
 d3.json("js/data.json", function(error, data) {
   if (error)
@@ -142,8 +139,6 @@ d3.json("js/data.json", function(error, data) {
     addTask(data[i]);
   }
 });
-
-console.log(tasks);
 
 
 /*
@@ -223,12 +218,5 @@ function makeYearMonth(y, m) {
     return Date.UTC(y, m, 0, 0, 0)
 }
 
-console.log(tasks)
-// tasks = []
-// addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
-// addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
-// addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
-// tasks.push(task_new)
-// tasks.push(task_new2)
 gantt(tasks);
 changeTime(0)
