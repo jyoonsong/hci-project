@@ -234,6 +234,28 @@ d3.gantt = function() {
       let ganttChartGroup = svg.select(".gantt-chart");
       let rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
 
+      d3.selectAll("line").remove()
+      curr_start_year = new Date(timeDomainStart).getFullYear() + 1
+      curr_end_year = new Date(timeDomainEnd).getFullYear()
+      line_scope = 5
+      _year_idx = curr_start_year
+      dashed_sw = true
+
+      while (true) {
+          _year_idx = _year_idx + 5
+          d3.select(".gantt-chart")
+              .append("line")
+              .attr("class", function() { return dashed_sw ? "dashed-line" : "solid-line"})
+              .attr('x1', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
+              .attr('y1', function(){ return 0 })
+              .attr('x2', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
+              .attr('y2', function(){ return height })
+          dashed_sw = !dashed_sw
+
+          if (_year_idx > curr_end_year)
+              break
+      }
+
       rect.enter()
           .append("g").attr("id", function(d, i) { return "rect"+i; })
           .insert("rect", ":first-child")
