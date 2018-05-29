@@ -159,9 +159,21 @@ d3.gantt = function() {
               return Math.max(1,(x(d.endDate) - x(d.startDate)));
           });
 
+      // // text (group name)
+      // svg.selectAll(".chart")
+      //     .data(tasks, keyFunction).enter()
+      //     .append("text")
+      //     .attr("class", 'nodetxt')
+      //     .attr("text-anchor", 'middle')
+      //     .attr("transform", rectTransform)
+      //     .attr("height", function(d) { return y.rangeBand(); })
+      //     .attr("width", function(d) {
+      //         return Math.max(1,(x(d.endDate) - x(d.startDate)));
+      //     })
+
       tasks.forEach(function (task, i){
           color = task.color
-          console.log(color)
+
           svg.select("#rect"+i).selectAll(".subnode")
               .data(task.data.orgEvent).enter()
               .append("rect")
@@ -180,7 +192,7 @@ d3.gantt = function() {
                   return Math.max(1,(x(d.endDate) - x(d.startDate)));
               })
 
-          svg.select("#rect"+i).selectAll("text")
+          svg.select("#rect"+i).selectAll("text.subnode")
               .data(task.data.orgEvent).enter()
               .append('text')
               .attr('class', function() {
@@ -268,6 +280,24 @@ d3.gantt = function() {
       tasks.forEach(function (task, i){
           color = task.color
 
+          // text (group name)
+          svg.select("#rect"+i).selectAll(".nodetxt").data([task]).enter()
+              .append("text")
+              .attr("class", 'nodetxt')
+              .attr("text-anchor", 'middle')
+              .attr("transform", function(d) {
+                  x_val = x(d.startDate) + Math.max(1,(x(d.endDate) - x(d.startDate)))/2 // x_origin + width/2 + font/2
+                  y_val = y(getYAxisValue(d)) + y.rangeBand()/2 + 4 // y_origin + height/2 + font/2
+                  return "translate(" + x_val + "," + y_val+ ")";
+              })
+              // .attr("height", function(d) { return y.rangeBand(); })
+              // .attr("width", function(d) {
+              //     return Math.max(1,(x(d.endDate) - x(d.startDate)));
+              // })
+              .text(function(d) {
+                  return d.data.orgName
+              });
+
           rect = svg.select("#rect"+i)
 
           rect.selectAll(".subnode")
@@ -288,7 +318,7 @@ d3.gantt = function() {
                   return Math.max(0,(x(d.endDate) - x(d.startDate)));
               })
 
-          rect.selectAll("text")
+          rect.selectAll("text.subnode")
               .data(task.data.orgEvent).enter()
               .append('text')
               .attr('class', function() {
@@ -347,6 +377,17 @@ d3.gantt = function() {
                   return Math.max(0,(x(d.endDate) - x(d.startDate)));
               });
 
+          rect.selectAll("text.nodetxt")
+              .attr("transform", function(d) {
+                  if (x(d.startDate) >= 1800)
+                      x_val = 2000
+                  else // x_origin + width/2 + font/2
+                      x_val = x(d.startDate) + Math.max(1,(x(d.endDate) - x(d.startDate)))/2
+
+                  // y_origin + height/2 + font/2
+                  y_val = y(getYAxisValue(d)) + y.rangeBand()/2 + 4
+                  return "translate(" + x_val + "," + y_val+ ")";
+              });
       })
 
       // svg.select(".x").transition().call(xAxis);
