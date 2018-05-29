@@ -26,8 +26,8 @@
   {
     "startDate" : "1930/03",
     "endDate" : "1935/03",
-    "color" : "MidRight",
-    "status" : "MidRight",
+    "color" : "Mid",
+    "status" : "Mid",
     "location" : "중국관내",
     "data" : {
       "orgName": "테스트2",
