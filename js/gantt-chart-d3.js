@@ -271,13 +271,6 @@ d3.gantt = function() {
               return Math.max(1,(x(d.endDate) - x(d.startDate)));
           });
 
-      // ganttChartGroup
-      //     .attr("transform", rectTransform)
-      //     .attr("height", function(d) { return y.rangeBand(); })
-      //     .attr("width", function(d) {
-      //         return Math.max(0,(x(d.endDate) - x(d.startDate)));
-      //     });
-
       tasks.forEach(function (task, i){
           color = task.color
 
@@ -291,12 +284,13 @@ d3.gantt = function() {
                   y_val = y(getYAxisValue(d)) + y.rangeBand()/2 + 4 // y_origin + height/2 + font/2
                   return "translate(" + x_val + "," + y_val+ ")";
               })
-              // .attr("height", function(d) { return y.rangeBand(); })
-              // .attr("width", function(d) {
-              //     return Math.max(1,(x(d.endDate) - x(d.startDate)));
-              // })
               .text(function(d) {
-                  return d.data.orgName
+                  _t = d.data.orgName
+                  _w = Math.max(1,(x(d.endDate) - x(d.startDate)))
+                  if (_w > _t.length * 12)
+                    return d.data.orgName;
+                  else
+                    return "..."
               });
 
           rect = svg.select("#rect"+i)
@@ -380,20 +374,26 @@ d3.gantt = function() {
 
           rect.selectAll("text.nodetxt")
               .attr("transform", function(d) {
-                  if (x(d.startDate) >= 1800)
-                      x_val = 2000
+                  if (x(d.startDate) >= width)
+                      x_val = 5000
                   else // x_origin + width/2 + font/2
                       x_val = x(d.startDate) + Math.max(1,(x(d.endDate) - x(d.startDate)))/2
 
                   // y_origin + height/2 + font/2
                   y_val = y(getYAxisValue(d)) + y.rangeBand()/2 + 4
                   return "translate(" + x_val + "," + y_val+ ")";
+              })
+              .text(function(d) {
+                  _t = d.data.orgName
+                  _w = Math.max(1,(x(d.endDate) - x(d.startDate)))
+                  if (_w > _t.length * 12)
+                      return d.data.orgName;
+                  else
+                      return "..."
               });
       })
 
-      // svg.select(".x").transition().call(xAxis);
       svg.select(".x2").transition().call(x2Axis);
-      // svg.select(".y").transition().call(yAxis);
 
       return gantt;
   };

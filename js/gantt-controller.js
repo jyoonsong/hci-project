@@ -61,16 +61,7 @@ let task_data = {
       "orgDescription": "1919년 3월, 3.1운동이라는 거대한 움직임의 영향으로 설립되었다. 연해주에서는 손병희가 이끄는 전로한족회중앙총회가, 서울에서는 이승만이 이끄는 한성정부가, 상하이에서는 신한청년당이 중심이 된 대한민국 임시정부가 구성된 것이다. 상하이에서는 대한민국 임시헌장을 발표하였다."
     };
 
-var tasks = [
-    {
-      "startDate" : makeYearMonth(1919, 3), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
-      "endDate" : makeYearMonth(1945, 12), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-      "color" : colors[2], // 성향
-      "status" : colors[2], // 성향별색상 데이터 분리 (중복데이터)
-      "location" : "중국관내",
-      "data" : task_data
-    }
-];
+var tasks = [];
 
 let startYear = makeYearMonth(1910, 0);
 let endYear = makeYearMonth(1945, 0);
