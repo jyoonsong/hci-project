@@ -12,9 +12,9 @@ d3.gantt = function() {
   let FIXED_TIME_DOMAIN_MODE = "fixed";
 
   let margin = {
-      top : 20,
+      top : 10,
       right : 40,
-      bottom : 40,
+      bottom : 20,
       left : 15
   };
 
@@ -121,7 +121,7 @@ d3.gantt = function() {
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
-
+    
       // node
       node = svg.selectAll(".chart")
           .data(tasks, keyFunction).enter()
@@ -228,33 +228,33 @@ d3.gantt = function() {
 
       initTimeDomain(tasks);
       initAxis();
+    
+      d3.selectAll("line").remove()
+      let curr_start_year = new Date(timeDomainStart).getFullYear() + 1
+      let curr_end_year = new Date(timeDomainEnd).getFullYear()
+      let line_scope = 5
+      let _year_idx = curr_start_year
+      let dashed_sw = true
+    
+      while (true) {
+        _year_idx = _year_idx + 5
+        d3.select(".gantt-chart")
+            .append("line")
+            .attr("class", function() { return dashed_sw ? "dashed-line" : "solid-line"})
+            .attr('x1', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
+            .attr('y1', function(){ return 0 })
+            .attr('x2', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
+            .attr('y2', function(){ return height })
+        dashed_sw = !dashed_sw
+
+        if (_year_idx > curr_end_year)
+            break
+      }
 
       let svg = d3.select(".chart");
 
       let ganttChartGroup = svg.select(".gantt-chart");
       let rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
-
-      d3.selectAll("line").remove()
-      curr_start_year = new Date(timeDomainStart).getFullYear() + 1
-      curr_end_year = new Date(timeDomainEnd).getFullYear()
-      line_scope = 5
-      _year_idx = curr_start_year
-      dashed_sw = true
-
-      while (true) {
-          _year_idx = _year_idx + 5
-          d3.select(".gantt-chart")
-              .append("line")
-              .attr("class", function() { return dashed_sw ? "dashed-line" : "solid-line"})
-              .attr('x1', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
-              .attr('y1', function(){ return 0 })
-              .attr('x2', function(){ return x(Date.UTC(_year_idx,0,0,0,0)) })
-              .attr('y2', function(){ return height })
-          dashed_sw = !dashed_sw
-
-          if (_year_idx > curr_end_year)
-              break
-      }
 
       rect.enter()
           .append("g").attr("id", function(d, i) { return "rect"+i; })

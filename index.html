@@ -41,7 +41,7 @@
           <img class="logo" src="img/logo.png" alt="logo">
         </a>
         &nbsp; | &nbsp;
-        <a class="btn text-grey-5ㄱ">
+        <a class="btn text-grey-8">
           <b>X축 시기</b>
         </a>
         <span id="changeTime">
@@ -52,13 +52,13 @@
           <a class="btn btn-line">40년대 (~1945)</a>
         </span>
         &nbsp; | &nbsp;
-        <a class="btn text-grey-5ㄱ">
+        <a class="btn text-grey-8">
           <b>Y축 선택</b>
         </a>
         <span class="select">
           <select id="changeAxis">
-            <option value="taskName" selected>사상</option>
-            <option value="orgPlace">장소</option>
+            <option value="Color" selected>사상</option>
+            <option value="Pos">장소</option>
             <option disabled>중심인물</option>
             <option disabled>체제</option>
           </select>
@@ -101,9 +101,8 @@
   
   <!-- JavaScripts -->
   <script type="text/javascript" src="js/plugins.js"></script>
-  <script src="js/gantt-chart-d3.js"></script>
-  <script src="js/data.json"></script>
-  <script src="js/gantt-controller.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/chart-controller.js"></script>
   <script src="js/main.js"></script>
   <script>
     window.onload = Index.init();

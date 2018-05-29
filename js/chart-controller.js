@@ -3,7 +3,7 @@
  */
 
 let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
-let locations = [ "중국관내", "연해주", "국내", "만주", "화북" ];
+let locations = [ "중국관내", "중국관내2", "중국관내3", "만주", "화북" ]; // 연해주 국내 추가
 
 let taskStatus = {
     "FarRight" : "blue",
@@ -113,8 +113,8 @@ function changeTime(idx) {
 }
 
 function swapAxisModeInto(mode) {
-    _taskTypes = (mode == 'Pos') ? locations : colors
-    gantt.currentTaskMode(mode).taskTypes(_taskTypes).redraw(tasks)
+    _taskTypes = (mode == 'Pos') ? locations : colors;
+    gantt.currentTaskMode(mode).taskTypes(_taskTypes).redraw(tasks);
 }
 
 function changeTimeDomain(timeDomainString) {

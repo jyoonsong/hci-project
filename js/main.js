@@ -16,33 +16,70 @@ let Index = ( function () {
       document.querySelectorAll("rect.node")
     );
     $nodes.forEach(callShowContent);
+    
+    document.querySelector("#changeAxis").onchange = function () {
+      swapAxisModeInto(this.value);
+      swapAxisLabelInto(this.value);
+    }
+    
+    document.querySelector("svg.chart").onclick = function(e) {
+      if (e.target == this) { 
+        unsetOpacity($nodes);
+      }
+    }; 
   }
   
-  function callChangeTime(ele, index, $timeBtn) {
-    ele.addEventListener("click", function() {
-      changeTime(index);
-      setActive($timeBtn, index);
-    })
-  }
+  function swapAxisLabelInto(changedMode) {
+    let content;
+    if (changedMode == 'Color')
+      content = '<span class="text-blue">우</span><span class="bar"></span><span class="text-red">좌</span>';
+    else if (changedMode == 'Pos')
+      content = "<span class='text-grey-6'>관내</span><span class='text-white'>관내</span><span class='text-white'>관내</span><span class='text-grey-6'>만주</span><span class='text-grey-6'>화북</span>";
+    document.querySelector(".yAxis").innerHTML = content;
 
-  document.querySelector("#changeAxis").onchange = function (e) {
-      changedMode = (this.value == 'taskName') ? 'Color' : 'Pos'
-      swapAxisModeInto(changedMode)
   }
-
-  function setActive($arr, index) {
+  
+  function unsetActive($arr, index) {
     for (let i = 0; i < $arr.length; i++)
         if (i != index)
           $arr[i].classList.remove("active");
-      
+  }
+
+  function setActive($arr, index) {
     $arr[index].classList.add("active");
   }
   
+  function setOpacity($arr, index) {
+    for (let i = 0; i < $arr.length; i++) {
+      if (i != index) {
+        $arr[i].classList.add("transparent");
+        $arr[i].classList.remove("active");
+      }
+      else
+        $arr[i].classList.remove("transparent");
+    }
+    console.log(index + "is not transparent");
+  }
+  
+  function unsetOpacity($arr) {
+    for (let i = 0; i < $arr.length; i++)
+      $arr[i].classList.remove("transparent", "active");
+  }
+  
+  function callChangeTime(ele, index, $timeBtn) {
+    ele.onclick = function() {
+      changeTime(index);
+      setActive($timeBtn, index);
+      unsetActive($timeBtn, index);
+    };
+  }
+  
   function callShowContent(node, i, $nodes) {
-    node.addEventListener("click", function() {
+    node.onclick = function() {
       showContent(this);
       setActive($nodes, i);
-    });
+      setOpacity($nodes, i);
+    };
   }
   
   function showContent(node) {

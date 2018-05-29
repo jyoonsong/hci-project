@@ -4,8 +4,6 @@ $base-font-family: 'Spoqa Han Sans', Helvetica, sans-serif !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 
-$text-color:       #343a40 !default;
-$bg-color: #fff !default;
 $grey: (
   "0": #f8f9fa,
   "1": #f1f3f5,
@@ -34,7 +32,8 @@ $color: (
   "red-purple": #CF547D,
   "purple": #9E56A8,
   "blue-purple": #6E58D3,
-  "blue": #3D5AFE
+  "blue": #3D5AFE,
+  "white": #fff
 );
 $red: map-get($color, "red");
 $red-purple: map-get($color, "red-purple");
@@ -42,6 +41,8 @@ $purple: map-get($color, "purple");
 $blue-purple: map-get($color, "blue-purple");
 $blue: map-get($color, "blue");
 
+$text-color: $grey-8 !default;
+$bg-color: map-get($color, "white") !default;
 $landscape: 1080px !default;
 
 @mixin media-query($device) {

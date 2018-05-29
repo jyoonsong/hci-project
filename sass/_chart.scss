@@ -38,7 +38,7 @@ header {
 .scrollable {
   overflow-x: auto;
   white-space: nowrap;
-  margin-left: -15px;
+  margin-left: -20px;
 }
 g.x2.axis {
   font-size: .8rem;
@@ -47,8 +47,9 @@ g.x2.axis {
   align-self: stretch;
   justify-content: space-between;
   margin-left: 20px;
-  padding: 2rem 2rem 4rem 0;
+  padding: 3.5rem 2rem 6rem 0; // 2rem 2rem 3.5rem 0
   background-color: $bg-color;
+  white-space: nowrap;
   .bar {
     background: $blue; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, $blue, $red); /* Chrome 10-25, Safari 5.1-6 */
@@ -58,19 +59,38 @@ g.x2.axis {
     margin: 10px 0;
   }
 }
+line {
+  stroke: rgba(0,0,0,0.3);
+  &.dashed-line {
+    stroke-dasharray: 3,7;
+  }
+  &.solid-line {
+    
+  }
+}
+.node {
+  transition: opacity .2s linear;
+  &.transparent {
+    opacity: 0.3;
+  }
+  &.active {
+    opacity: 1 !important;
+  }
+}
 .node:active,
 .node:focus,
 .node:hover {
   cursor: pointer;
 }
-.node.active ~ .subnode,
 .node:active ~ .subnode,
 .node:focus ~ .subnode,
 .node:hover ~ .subnode {
   opacity: 1;
 }
-.node.active ~ .nodetxt {
-   opacity: 0; 
+.node:active ~ .nodetxt,
+.node:focus ~ .nodetxt,
+.node:hover ~ .nodetxt {
+  opacity: 0;
 }
 .nodetxt {
   font-size: .85em;

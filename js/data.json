@@ -4,7 +4,7 @@
     "endDate" : "1935/03",
     "color" : "FarRight",
     "status" : "FarRight",
-    "location" : "중국관내",
+    "location" : "중국관내2",
     "data" : {
       "orgName": "한국독립군",
       "orgLeader": "지청천",
@@ -33,7 +33,7 @@
     "endDate" : "1945/12",
     "color" : "MidRight",
     "status" : "MidRight",
-    "location" : "중국관내",
+    "location" : "중국관내3",
     "data" : 
       {
         "orgName": "대한민국임시정부",
@@ -84,18 +84,18 @@
       }
   },
   {
-    "startDate" : "1935/02",
+    "startDate" : "1935/03",
     "endDate" : "1937/12",
     "color" : "Mid",
     "status" : "Mid",
-    "location" : "중국관내",
+    "location" : "중국관내2",
     "data" : {
       "orgName": "민족혁명당",
       "orgLeader": "김원봉",
       "orgEvent": [
         {
           "name": "좌우5당통합",
-          "startDate": "1935/03",
+          "startDate": "1935/04",
           "endDate": "1935/12"
         },
         {
@@ -175,7 +175,7 @@
     "endDate" : "1935/03",
     "color" : "FarLeft",
     "status" : "FarLeft",
-    "location" : "중국관내",
+    "location" : "만주",
     "data" : {
       "orgName": "조선혁명군",
       "orgLeader": "양세봉",
