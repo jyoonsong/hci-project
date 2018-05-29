@@ -19,55 +19,19 @@ let task_data = {
       "orgEvent": [
         {
           "name": "대한민국 임시헌장",
-          "startDate": makeYearMonth(1919, 4),
-          "endDate": makeYearMonth(1919, 6)
-        },
-        {
-          "name": "이승만의 위임통치청원",
-          "startDate": makeYearMonth(1920, 1),
-          "endDate": makeYearMonth(1920, 12)
-        },
-        {
-          "name": "국민대표회의",
-          "startDate": makeYearMonth(1923, 1),
-          "endDate": makeYearMonth(1923, 12)
-        },
-        {
-          "name": "이승만 탄핵",
-          "startDate": makeYearMonth(1925, 1),
-          "endDate": makeYearMonth(1925, 12)
-        },
-        {
-          "name": "한인애국단",
-          "startDate": makeYearMonth(1932, 1),
-          "endDate": makeYearMonth(1933, 12)
-        },
-        {
-          "name": "이동(상하이~항저우)",
-          "startDate": makeYearMonth(1934, 1),
-          "endDate": makeYearMonth(1940, 12)
-        },
-        {
-          "name": "대한민국건국강령",
-          "startDate": makeYearMonth(1941, 1),
-          "endDate": makeYearMonth(1941, 12)
-        },
-        {
-          "name": "주석 및 부수적제 개헌",
-          "startDate": makeYearMonth(1944, 1),
-          "endDate": makeYearMonth(1944, 12)
+          "startDate": makeYearMonth(1944, 4),
+          "endDate": makeYearMonth(1945, 6)
         }
-      ],
-      "orgDescription": "1919년 3월, 3.1운동이라는 거대한 움직임의 영향으로 설립되었다. 연해주에서는 손병희가 이끄는 전로한족회중앙총회가, 서울에서는 이승만이 이끄는 한성정부가, 상하이에서는 신한청년당이 중심이 된 대한민국 임시정부가 구성된 것이다. 상하이에서는 대한민국 임시헌장을 발표하였다."
+      ]
     };
 
 var tasks = [
     {
-      "startDate" : makeYearMonth(1919, 3), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
+      "startDate" : makeYearMonth(1944, 3), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
       "endDate" : makeYearMonth(1945, 12), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
-      "color" : colors[2], // 성향
-      "status" : colors[2], // 성향별색상 데이터 분리 (중복데이터)
-      "location" : "중국관내",
+      "color" : colors[1], // 성향
+      "status" : colors[1], // 성향별색상 데이터 분리 (중복데이터)
+      "location" : locations[2],
       "data" : task_data
     }
 ];

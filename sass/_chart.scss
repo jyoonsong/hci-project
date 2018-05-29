@@ -72,6 +72,7 @@ g.x2.axis {
 .nodetxt {
   font-size: .85em;
   fill: rgba(255,255,255,0.9);
+  pointer-events: none;
 }
 .subnode {
   pointer-events: none;
