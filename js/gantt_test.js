@@ -30,7 +30,7 @@ let task_data = {
       "orgDescription": "테스트 설명1"
     };
 
-let tasks = [
+var tasks = [
     {
       "startDate" : makeYearMonth(1910, 2), //d3.time.hour.offset(lastEndDate, Math.ceil(1 * Math.random())),
       "endDate" : makeYearMonth(1914, 5), // d3.time.hour.offset(lastEndDate, (Math.ceil(Math.random() * 3)) + 1),
@@ -82,11 +82,13 @@ gantt.tickFormat("%m")
 console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ])
 
 // changeTimeDomain(timeDomainString);
-tasks = [task_new, task_new2]
-gantt(tasks);
+// tasks = [task_new, task_new2]
+// gantt(tasks);
 // gantt()
 
-d3.json("https://raw.githubusercontent.com/jyoonsong/hci-project/master/js/data.json", function(error, data) {
+tasks = []
+
+d3.json("js/data.json", function(error, data) {
   if (error)
     throw error;
   for (let i = 0; i < data.length; i++) {
@@ -97,13 +99,11 @@ d3.json("https://raw.githubusercontent.com/jyoonsong/hci-project/master/js/data.
     data[i].startDate = makeYearMonth(start[0], start[1]);
     data[i].endDate = makeYearMonth(end[0], end[1]);
     
-    data[i].data.orgEvent.forEach( function(e) { 
-      console.log("hihi");console.log(e);
+    data[i].data.orgEvent.forEach( function(e) {
       let eventStart = e.startDate.split("/");
       let eventEnd = e.endDate.split("/");
       e.startDate = makeYearMonth(eventStart[0], eventStart[1]);
       e.endDate = makeYearMonth(eventEnd[0], eventEnd[1]);
-      console.log("hihi");console.log(e);
     });
     
     addTask(data[i]);
@@ -178,7 +178,7 @@ function addTask(task) {
     tasks.push(task);
 
     // changeTimeDomain(timeDomainString);
-    gantt.redraw(tasks);
+    // gantt.redraw(tasks);
 };
 
 function addRandomHistory() {
@@ -201,11 +201,10 @@ function makeYearMonth(y, m) {
 }
 
 console.log(tasks)
-
-tasks = []
-addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
-addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
-addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
-tasks.push(task_new)
-tasks.push(task_new2)
+// tasks = []
+// addTask(makeYearMonth(1910, 3), makeYearMonth(1910, 5), colors[0], colors[0])
+// addTask(makeYearMonth(1910, 4), makeYearMonth(1910, 7), colors[1], colors[1])
+// addTask(makeYearMonth(1910, 6), makeYearMonth(1910, 9), colors[0], colors[0])
+// tasks.push(task_new)
+// tasks.push(task_new2)
 gantt(tasks);
