@@ -25,9 +25,9 @@
   },
   {
     "startDate" : "1930/03",
-    "endDate" : "1935/03",
-    "color" : "Mid",
-    "status" : "Mid",
+    "endDate" : "1935/12",
+    "color" : "MidLeft",
+    "status" : "MidLeft",
     "location" : "중국관내",
     "data" : {
       "orgName": "테스트2",
@@ -40,8 +40,8 @@
         },
         {
           "name": "사건4",
-          "startDate": "1930/03",
-          "endDate": "1930/12"
+          "startDate": "1932/03",
+          "endDate": "1933/12"
         }
       ],
       "orgDescription": "테스트 설명1"
