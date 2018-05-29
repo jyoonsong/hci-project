@@ -1,8 +1,6 @@
-d3.json("/js/data.json", function(error, data) {
-  if (error)
-    throw error;
-  console.log(data);
-});
+/*
+ * Variables
+ */
 
 let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
 
@@ -42,10 +40,10 @@ let taskSkull = {
         }],
         "orgDescription": ""
     }
-}
+};
 
-let startYear = makeYearMonth(1910, 0)
-let endYear = makeYearMonth(1945, 0)
+let startYear = makeYearMonth(1910, 0);
+let endYear = makeYearMonth(1945, 0);
 
 let PossibleTimeDomain = [
     {"startDate": makeYearMonth(1910, 0),"endDate": makeYearMonth(1945, 0)},
@@ -53,7 +51,20 @@ let PossibleTimeDomain = [
     {"startDate": makeYearMonth(1920, 0),"endDate": makeYearMonth(1930, 0)},
     {"startDate": makeYearMonth(1930, 0),"endDate": makeYearMonth(1940, 0)},
     {"startDate": makeYearMonth(1940, 0),"endDate": makeYearMonth(1945, 0)},
-]
+];
+
+let format = "%H:%M";
+let timeDomainString = "1day";
+
+/*
+ * Get Data
+ */
+
+d3.json("/js/data.json", function(error, data) {
+  if (error)
+    throw error;
+  console.log(data);
+});
 
 
 task_new = taskSkull
@@ -105,8 +116,11 @@ task_new2 =  {
 // });
 // let minDate = tasks[0].startDate;
 
-let format = "%H:%M";
-let timeDomainString = "1day";
+
+
+/*
+ * Draw Chart
+ */
 
 let gantt = d3.gantt().taskTypes(colors).taskStatus(taskStatus).tickFormat(format).height(document.querySelector("#chart").offsetHeight - 80).width(5000);
 
@@ -120,6 +134,11 @@ console.log([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(yea
 tasks = [task_new, task_new2]
 gantt(tasks);
 // gantt()
+
+
+/*
+* Functions
+*/
 
 function changeTime(idx) {
     console.log( d3.time.month.offset(PossibleTimeDomain[idx]['startDate'], 0),

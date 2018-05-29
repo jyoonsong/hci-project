@@ -4,7 +4,7 @@
     "endDate" : "1930/03",
     "color" : "MidRight",
     "status" : "MidRight",
-    "hub" : "중국관내",
+    "location" : "중국관내",
     "data" : {
       "orgName": "조선혁명군",
       "orgLeader": "양세봉",
@@ -28,7 +28,7 @@
     "endDate" : "1930/03",
     "color" : "MidRight",
     "status" : "MidRight",
-    "hub" : "중국관내",
+    "location" : "중국관내",
     "data" : {
       "orgName": "테스트2",
       "orgLeader": "김구",
