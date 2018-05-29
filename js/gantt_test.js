@@ -179,6 +179,8 @@ function addTask(task) {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
+    Index.init();
+
 };
 
 function addRandomHistory() {
