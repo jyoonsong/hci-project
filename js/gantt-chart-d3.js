@@ -24,6 +24,8 @@ d3.gantt = function() {
   let timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
   let taskTypes = [];
   let taskStatus = [];
+  let currentTaskMode = '';
+  let taskAvailableMode = ['Pos', 'Color'];
   let height = document.body.clientWidth - margin.top - margin.bottom - 5;
   let width = document.body.clientWidth - margin.right - margin.left-5;
 
@@ -36,11 +38,19 @@ d3.gantt = function() {
   }
 
   let keyFunction = function(d) {
-      return d.startDate + d.color + d.endDate;
+      return d.startDate + getYAxisValue(d) + d.endDate;
   };
 
   let rectTransform = function(d) {
-      return "translate(" + x(d.startDate) + "," + y(d.color) + ")";
+      return "translate(" + x(d.startDate) + "," + y(getYAxisValue(d)) + ")";
+  };
+
+  let getYAxisValue = function(d) {
+      if (currentTaskMode == 'Pos') {
+          return d.location
+      } else {
+          return d.color
+      }
   };
 
   let x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
@@ -158,7 +168,7 @@ d3.gantt = function() {
               .attr("y", 0)
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) + 5;
+                  y_val = y(getYAxisValue(task)) + 5;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .transition()
@@ -175,7 +185,7 @@ d3.gantt = function() {
               .attr("y", ".35em")
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) - 10;
+                  y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .text(function (d) {
@@ -261,7 +271,7 @@ d3.gantt = function() {
               .attr("y", 0)
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) + 5;
+                  y_val = y(getYAxisValue(task)) + 5;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .transition()
@@ -279,7 +289,7 @@ d3.gantt = function() {
               .attr("y", ".35em")
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) - 10;
+                  y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .text(function (d) {
@@ -298,7 +308,7 @@ d3.gantt = function() {
               .transition()
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) + 5;
+                  y_val = y(getYAxisValue(task)) + 5;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })
@@ -310,7 +320,7 @@ d3.gantt = function() {
               .transition()
               .attr("transform", function(d) {
                   x_val = x(d.startDate);
-                  y_val = y(color) - 10;
+                  y_val = y(getYAxisValue(task)) - 10;
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })
@@ -360,6 +370,16 @@ d3.gantt = function() {
       taskTypes = value;
       return gantt;
   };
+
+  gantt.currentTaskMode = function(value) {
+      if (!arguments.length)
+          return currentTaskMode;
+
+      if (!taskAvailableMode.includes(value))
+          throw value + " is not available mode."
+      currentTaskMode = value
+      return gantt
+  }
 
   gantt.taskStatus = function(value) {
       if (!arguments.length)
