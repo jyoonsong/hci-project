@@ -130,7 +130,11 @@ d3.json("js/data.json", function(error, data) {
     data[i].startDate = makeYearMonth(start[0], start[1]);
     data[i].endDate = makeYearMonth(end[0], end[1]);
     
+<<<<<<< HEAD
     data[i].data.orgEvent.forEach( function(e) {
+=======
+    data[i].data.orgEvent.forEach( function(e) { 
+>>>>>>> f4b111a3fccc3126d6c387709e3b68ce847fe246
       let eventStart = e.startDate.split("/");
       let eventEnd = e.endDate.split("/");
       e.startDate = makeYearMonth(eventStart[0], eventStart[1]);
