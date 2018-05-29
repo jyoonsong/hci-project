@@ -22,8 +22,20 @@ p {
 .event {
   border-radius: 5px;
   padding: 1rem 1.5rem;
+  position: relative;
   background: $grey-2;
-  margin: 0 .5rem;
+  margin: 0 .75rem;
   text-align: center;
-  float: left
+  float: left;
+  &::before {
+    content: "\25b6";
+    position: absolute;
+    left: -19px;
+  }
+  &:first-child {
+    margin-left: 0;
+    &::before {
+      content: none;
+    }
+  }
 }

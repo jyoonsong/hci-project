@@ -1,3 +1,8 @@
+d3.json("/js/data.json", function(error, data) {
+  if (error)
+    throw error;
+  console.log(data);
+});
 
 let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
 
