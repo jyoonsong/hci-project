@@ -25,9 +25,9 @@
   },
   {
     "startDate" : "1930/03",
-    "endDate" : "1935/03",
-    "color" : "MidRight",
-    "status" : "MidRight",
+    "endDate" : "1935/12",
+    "color" : "MidLeft",
+    "status" : "MidLeft",
     "location" : "중국관내",
     "data" : {
       "orgName": "테스트2",
