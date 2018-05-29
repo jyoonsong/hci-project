@@ -69,9 +69,15 @@ g.x2.axis {
 .node:hover ~ .subnode {
   opacity: 1;
 }
+.node.active ~ .nodetxt {
+   opacity: 0; 
+}
 .nodetxt {
   font-size: .85em;
+  opacity: 1;
   fill: rgba(255,255,255,0.9);
+  pointer-events: none;
+  transition: opacity .2s linear;
 }
 .subnode {
   pointer-events: none;
