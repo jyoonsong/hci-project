@@ -26,7 +26,7 @@ let Index = ( function () {
   }
   
   function setActive($arr, index) {
-    for (i = 0; i < $timeBtn.length; i++)
+    for (let i = 0; i < $timeBtn.length; i++)
         if (i != index)
           $timeBtn[i].classList.remove("active");
       

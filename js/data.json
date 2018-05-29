@@ -1,0 +1,54 @@
+[
+  {
+    "startDate" : "1930/03",
+    "endDate" : "1935/03",
+    "color" : "MidRight",
+    "status" : "MidRight",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "조선혁명군",
+      "orgLeader": "양세봉",
+      "orgEvent": [
+        {
+          "name": "영릉가 전투",
+          "startDate": "1932/03",
+          "endDate": "1932/12"
+        },
+        {
+          "name": "흥경성 전투",
+          "startDate": "1933/06",
+          "endDate": "1933/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  },
+  {
+    "startDate" : "1930/03",
+    "endDate" : "1935/03",
+    "color" : "Mid",
+    "status" : "Mid",
+    "location" : "중국관내",
+    "data" : {
+      "orgName": "테스트2",
+      "orgLeader": "김구",
+      "orgEvent": [
+        {
+          "name": "사건3",
+          "startDate": "1930/03",
+          "endDate": "1930/12"
+        },
+        {
+          "name": "사건4",
+          "startDate": "1930/03",
+          "endDate": "1930/12"
+        }
+      ],
+      "orgDescription": "테스트 설명1"
+    }
+  }
+]
+
+
+
+
