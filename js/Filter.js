@@ -17,11 +17,13 @@ let Filter = ( function () {
     );
     $nodes.forEach(callShowContent);
     
+    // change y axis
     document.querySelector("#changeAxis").onchange = function () {
       swapAxisModeInto(this.value);
       swapAxisLabelInto(this.value);
     }
     
+    // unset active
     document.querySelector("svg.chart").onclick = function(e) {
       if (e.target == this) { 
         unsetOpacity($nodes);

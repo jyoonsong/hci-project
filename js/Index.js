@@ -7,11 +7,19 @@ let Index = ( function () {
     Map.init();
     Filter.init();
     
-    $('#searchPanel').multiselect({
+    $("#searchPanel").multiselect({
         columns: 1,
-        placeholder: '인물을 선택해보세요',
+        placeholder: "인물을 선택해보세요",
         search: true,
         selectAll: true
+    });
+
+    document.getElementById("des").addEventListener("click", function(e) {
+      console.log('hahaha');
+      if (this.classList.contains("active"))
+        this.classList.remove("active");
+      else
+        this.classList.add("active");
     });
   }
   

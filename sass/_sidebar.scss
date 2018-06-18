@@ -1,50 +1,56 @@
 aside {
   padding: 0 2.5rem;
+  transition: transform .5s ease-in-out;
+  transform: translateY( calc(40vh - 80px) );
+  &.active {
+    transform: translateY(0);
+    #des .drop-link {
+      transform: rotate(-180deg);
+    }
+  }
+  &:not(.active) {
+    #map {
+      pointer-events: none !important;
+    }
+  }
 }
 // map
 #map {
   border-radius: 25px 0 0 0;
 }
 // description
-$header-height: 80px;
-$des-body-height: calc(40vh - 80px);
-
 #des {
-  transition: transform .5s ease-in-out;
-  transform: translateY(calc(40vh - 80px));
+  .drop-link {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #454e75;
+    border-radius: 50px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 2rem;
+    text-align: center;
+    transition: transform .5s linear;
+    transform: rotate(0);
+  }
   .container:first-child {
     background: $grey-3 url(../img/search-label.png) 26px 24px no-repeat;
     position: sticky;
     top: 0;
-    height: $des-header-height;
+    height: 80px;
     border-radius: 0 25px 0 0;
     z-index: 999;
     padding-left: 4.2rem;
-    .drop-link {
-      width: 32px;
-      height: 32px;
-      border: 2px solid #454e75;
-      border-radius: 50px;
-      position: absolute;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-      right: 2rem;
-      text-align: center;
-      transition: transform .5s linear;
+    &:hover {
+      cursor: pointer;
     }
   }
   .container:last-child {
     padding: .25rem 2rem;
     background-color: $grey-1;
     overflow-y: scroll;
-    height: $des-body-height;
-  }
-  &.active {
-    transform: translateY(0);
-    .drop-link {
-      transform: rotateX(180deg);
-    }
+    height: calc(40vh - 80px);
   }
 }
 p {
