@@ -81,8 +81,11 @@ let Filter = ( function () {
       showContent(this);
       setActive($nodes, i);
       setOpacity($nodes, i);
+      Util.showSidebar();
     };
   }
+  
+  
   
   function showContent(node) {
     // parse values
