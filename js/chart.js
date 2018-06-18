@@ -353,6 +353,8 @@ d3.gantt = function() {
                   x_val = x(d.startDate) + Math.max(0.8,(x(d.endDate) - x(d.startDate)))/2 // x_origin + width/2 + font/2
                   if (x_val < 1)
                       x_val = -5000
+                  else if (x_val > width-10)
+                      x_val = 5000
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .text(function (d) {
@@ -395,6 +397,8 @@ d3.gantt = function() {
                   y_val = y(getYAxisValue(task)) + (y.rangeBand() - 10)/2 + 5;
                   if (x_val < 1)
                       x_val = -5000
+                  else if (x_val > width-10)
+                      x_val = 5000
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })
