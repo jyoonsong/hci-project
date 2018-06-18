@@ -49,9 +49,9 @@ d3.gantt = function() {
 
   let getYAxisValue = function(d) {
       if (currentTaskMode == 'Pos') {
-          return d.location
+          return d.location + d.locationOrderPriority
       } else {
-          return d.color
+          return d.color + d.colorsOrderPriority
       }
   };
 
@@ -121,7 +121,7 @@ d3.gantt = function() {
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
-    
+
       // node
       node = svg.selectAll(".chart")
           .data(tasks, keyFunction).enter()
