@@ -14,12 +14,13 @@ let Index = ( function () {
         selectAll: true
     });
 
-    document.getElementById("des").addEventListener("click", function(e) {
+    document.getElementById("des-header").addEventListener("click", function(e) {
       console.log('hahaha');
-      if (this.classList.contains("active"))
-        this.classList.remove("active");
+      let sidebar = this.parentElement.parentElement;
+      if (sidebar.classList.contains("active"))
+        sidebar.classList.remove("active");
       else
-        this.classList.add("active");
+        sidebar.classList.add("active");
     });
   }
   
