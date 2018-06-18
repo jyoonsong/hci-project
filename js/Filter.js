@@ -1,4 +1,4 @@
-let Index = ( function () {
+let Filter = ( function () {
 
   let $timeBtn, $nodes,
       _cursor = false;

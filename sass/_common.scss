@@ -58,7 +58,7 @@ aside {
 u { text-decoration: none; border-bottom: 1px solid;}
 em { font-style: italic; }
 strong { font-weight: 600; }
-small { font-size: 75%; color: $grey-6 }
+small { font-size: 75%; }
 .light { font-weight: 300; }
 .thin { font-weight: 100; }
 
@@ -66,7 +66,7 @@ small { font-size: 75%; color: $grey-6 }
    Color classes
    ========================================================================== */
 
-@for $i from 0 through 9 {
+@for $i from 0 through 7 {
   .grey-#{$i} {
     background-color: map-get($grey, #{$i});
   }
@@ -74,13 +74,19 @@ small { font-size: 75%; color: $grey-6 }
     color: map-get($grey, #{$i});
   }
 }
-@each $c in "red", "red-purple", "purple", "blue-purple", "blue", "white" {
+@each $c in "red-0", "red-1", "red-2", "purple-0", "purple-1", "purple-2", "blue-0", "blue-1", "blue-2" {
   .#{$c} {
     fill: map-get($color, #{$c});
   }
   .text-#{$c} {
     color: map-get($color, #{$c});
   }
+}
+.text-green {
+    color: #92d375;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#6c9), to(#92d375));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
   
 /* ==========================================================================
@@ -119,7 +125,8 @@ small { font-size: 75%; color: $grey-6 }
   margin-bottom: 0 !important;
 }
 .mx-0 {
-  @extend .ml-0, .mr-0;
+  @extend .ml-0;
+  @extend .mr-0;
 }
 .ml-0 {
   margin-left: 0 !important;

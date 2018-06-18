@@ -312,7 +312,7 @@ d3.gantt = function() {
                   if (_w > _t.length * 12)
                     return d.data.orgName;
                   else
-                    return "..."
+                    return ""
               });
 
           rect = svg.select("#rect"+i)
@@ -411,7 +411,7 @@ d3.gantt = function() {
                   if (_w > _t.length * 12)
                       return d.data.orgName;
                   else
-                      return "..."
+                      return ""
               });
       })
 

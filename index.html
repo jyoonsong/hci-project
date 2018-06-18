@@ -36,11 +36,65 @@
   <main class="flex flex-column">
     <!-- chart controls -->
     <header class="flex align-center">
-      <div class="container">
-        <a class="btn" href="">
-          <img class="logo" src="img/logo.png" alt="logo">
-        </a>
+      <div class="col-6" href="/">
+        <span class="thin">대한민국 </span>
+        <span class="text-grey-7">독립운동의 역사 &#8482; </span>
         &nbsp; | &nbsp;
+        <small><b>HCI Final Project</b></small>
+      </div>
+      <div class="col-6">
+        <div class="search flex align-center justify-end">
+          <div class="reset-tour-btn">
+            <div class="icon-tour" data-helper="10">
+              <svg style="width:17px;height:17px" class="icon" viewBox="0 0 24 24">
+                  <path fill="#0b85f2" d="M21,17V5H3V17H21M21,3A2,2 0 0,1 23,5V17A2,2 0 0,1 21,19H16V21H8V19H3A2,2 0 0,1 1,17V5A2,2 0 0,1 3,3H21M5,7H11V11H5V7M5,13H11V15H5V13M13,7H19V9H13V7M13,11H19V15H13V11Z"></path>
+              </svg>
+            </div>
+            <a href="#" class="reset-tour-btn cd-tour-trigger text-blue-0">그래프 옵션</a>
+            <!-- <button id="cd-tour-trigger" class="btn" data-dismiss="modal">learn more</button> -->
+          </div>
+         
+          <a href="#" class="info" data-helper="0">
+            <svg style="width:17px;height:17px" viewBox="0 0 24 24" class="icon">
+              <path fill="#929bbd" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"></path>
+            </svg>
+          </a>
+
+          <div class="search-box">
+            <!--<input type="text" name="" id="input" class="form-control" value="Sites: 67 Sites Filtered" required="required" pattern="" title="">
+            -->
+            <select name="searchPanel[]" multiple id="searchPanel">
+                <option value="김구">김구</option>
+                <option value="김규식">김규식</option>
+                <option value="김원봉">김원봉</option>
+                <option value="신채호">신채호</option>
+                <option value="안규홍">안규홍</option>
+                <option value="안중근">안중근</option>
+                <option value="여운형">여운형</option>
+                <option value="윤봉길">윤봉길</option>
+                <option value="이동휘">이동휘</option>
+                <option value="이시영">이시영</option>
+                <option value="조소앙">조소앙</option>
+                <option value="홍범도">홍범도</option>
+            </select>
+
+            <a href="#" class="search-btn">
+               <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                  <path fill="#fff" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"></path>
+              </svg>
+            </a>
+            
+          </div>
+          
+          <a class="drop-link">
+            <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+              <path fill="#fff" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div id="dropdown" class="dropdown">
         <a class="btn text-grey-8">
           <b>X축 시기</b>
         </a>
@@ -52,7 +106,7 @@
           <a class="btn btn-line">40년대 (~1945)</a>
         </span>
         &nbsp; | &nbsp;
-        <a class="btn text-grey-8">
+        <a class="btn">
           <b>Y축 선택</b>
         </a>
         <span class="select">
@@ -70,7 +124,13 @@
     <section id="chart" class="flex align-center justify-center">
       <div class="yAxis flex flex-column align-center">
         <span class="text-blue">우</span>
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#4AC3FB" d="M18,16V14.5L12,8.5L6,14.5V16H18M12,11.33L14.67,14H9.33L12,11.33Z"></path>
+        </svg>
         <span class="bar"></span>
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <path fill="#ec558d" d="M18,9V10.5L12,16.5L6,10.5V9H18M12,13.67L14.67,11H9.33L12,13.67Z"></path>
+        </svg>
         <span class="text-red">좌</span>
       </div>
       
@@ -98,10 +158,16 @@
   </aside>
   
   <!-- JavaScripts -->
+  <script type="text/javascript" src="vendor/jquery.js"></script>
+  <script type="text/javascript" src="vendor/jquery-multiselect.js"></script>
   <script type="text/javascript" src="js/plugins.js"></script>
+  <script src="js/Map.js"></script>
+  <script src="js/Filter.js"></script>
+  <script src="js/Index.js"></script>
+  
   <script src="js/chart.js"></script>
   <script src="js/chart-controller.js"></script>
-  <script src="js/main.js"></script>
+  
   <script>
     window.onload = Index.init();
   </script>

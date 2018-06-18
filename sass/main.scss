@@ -4,18 +4,30 @@ $base-font-family: 'Spoqa Han Sans', Helvetica, sans-serif !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 
+//$grey: (
+//  "0": #f8f9fa,
+//  "1": #f1f3f5,
+//  "2": #e9ecef,
+//  "3": #dee2e6,
+//  "4": #ced4da,
+//  "5": #adb5bd,
+//  "6": #868e96,
+//  "7": #495057,
+//  "8": #343a40,
+//  "9": #212529
+//);
+
 $grey: (
-  "0": #f8f9fa,
-  "1": #f1f3f5,
-  "2": #e9ecef,
-  "3": #dee2e6,
-  "4": #ced4da,
-  "5": #adb5bd,
-  "6": #868e96,
-  "7": #495057,
-  "8": #343a40,
-  "9": #212529
+  "0": #010413,
+  "1": #0e122b,
+  "2": #151935,
+  "3": #1c2340,
+  "4": #2c3553,
+  "5": #454e75,
+  "6": #959fbb,
+  "7": #dfdeee
 );
+
 $grey-0: map-get($grey, "0");
 $grey-1: map-get($grey, "1");
 $grey-2: map-get($grey, "2");
@@ -24,25 +36,38 @@ $grey-4: map-get($grey, "4");
 $grey-5: map-get($grey, "5");
 $grey-6: map-get($grey, "6");
 $grey-7: map-get($grey, "7");
-$grey-8: map-get($grey, "8");
-$grey-9: map-get($grey, "9");
+//$grey-8: map-get($grey, "8");
+//$grey-9: map-get($grey, "9");
 
 $color: (
-  "red": #FF5252,
-  "red-purple": #CF547D,
-  "purple": #9E56A8,
-  "blue-purple": #6E58D3,
-  "blue": #3D5AFE,
-  "white": #fff
+  "red-0": #FF3564,
+  "red-1": #FF5487,
+  "red-2": #DA4EA8,
+  "purple-0": #B249BD,
+  "purple-1": #A154FF,
+  "purple-2": #7B5DFA,
+  "blue-0": #0084ff,
+  "blue-1": #4AC3FB,
+  "blue-2": #4AE8F9
 );
-$red: map-get($color, "red");
-$red-purple: map-get($color, "red-purple");
-$purple: map-get($color, "purple");
-$blue-purple: map-get($color, "blue-purple");
-$blue: map-get($color, "blue");
 
-$text-color: $grey-8 !default;
-$bg-color: map-get($color, "white") !default;
+//$color: (
+//  "red": #FF5252,
+//  "red-purple": #CF547D,
+//  "purple": #9E56A8,
+//  "blue-purple": #6E58D3,
+//  "blue": #3D5AFE,
+//  "white": #fff
+//);
+
+$red: map-get($color, "red-0");
+$red-purple: map-get($color, "red-2");
+$purple: map-get($color, "purple-1");
+$blue-0: map-get($color, "blue-0");
+$blue: map-get($color, "blue-2");
+
+$text-color: $grey-6 !default;
+$bg-color: $grey-0 !default;
 $landscape: 1080px !default;
 
 @mixin media-query($device) {
@@ -56,7 +81,11 @@ html {box-sizing: border-box}
 @import
   "base",
   "common",
+  "form",
   "grid",
+  "header",
   "chart",
-  "sidebar"
+  "sidebar",
+  "leaflet",
+  "multiselect"
 ;

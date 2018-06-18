@@ -8,11 +8,11 @@ color_tasks = []
 location_tasks = []
 
 let taskStatus = {
-    "FarRight" : "blue",
-    "MidRight" : "blue-purple",
-    "Mid" : "purple",
-    "MidLeft" : "red-purple",
-    "FarLeft" : "red"
+    "FarRight" : "blue-2",
+    "MidRight" : "blue-0",
+    "Mid" : "purple-1",
+    "MidLeft" : "red-2",
+    "FarLeft" : "red-0"
 };
 
 let task_data = {
@@ -293,7 +293,7 @@ function addTask(task) {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
-    Index.init();
+    Filter.init();
 
 };
 
