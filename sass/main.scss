@@ -27,22 +27,44 @@ $grey-7: map-get($grey, "7");
 $grey-8: map-get($grey, "8");
 $grey-9: map-get($grey, "9");
 
-$color: (
-  "red": #FF5252,
-  "red-purple": #CF547D,
-  "purple": #9E56A8,
-  "blue-purple": #6E58D3,
-  "blue": #3D5AFE,
-  "white": #fff
+$black: (
+  "0": #010413,
+  "1": #0e122b,
+  "2": #151935,
+  "3": #1c2340,
+  "4": #959fbb,
+  "5": #dfdeee
 );
-$red: map-get($color, "red");
-$red-purple: map-get($color, "red-purple");
-$purple: map-get($color, "purple");
-$blue-purple: map-get($color, "blue-purple");
-$blue: map-get($color, "blue");
+
+$color: (
+  "red0": #FF3564,
+  "red1": #FF5487,
+  "red2": #DA4EA8,
+  "purple0": #B249BD,
+  "purple1": #A154FF,
+  "purple2": #7B5DFA,
+  "blue0": #357BFB,
+  "blue1": #4AC3FB,
+  "blue2": #4AE8F9
+);
+
+//$color: (
+//  "red": #FF5252,
+//  "red-purple": #CF547D,
+//  "purple": #9E56A8,
+//  "blue-purple": #6E58D3,
+//  "blue": #3D5AFE,
+//  "white": #fff
+//);
+
+$red: map-get($color, "red0");
+$red-purple: map-get($color, "red2");
+$purple: map-get($color, "purple1");
+$blue-purple: map-get($color, "blue0");
+$blue: map-get($color, "blue2");
 
 $text-color: $grey-8 !default;
-$bg-color: map-get($color, "white") !default;
+$bg-color: map-get($black, "0") !default;
 $landscape: 1080px !default;
 
 @mixin media-query($device) {
@@ -58,5 +80,6 @@ html {box-sizing: border-box}
   "common",
   "grid",
   "chart",
-  "sidebar"
+  "sidebar",
+  "leaflet"
 ;

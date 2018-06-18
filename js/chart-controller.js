@@ -6,11 +6,11 @@ let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
 let locations = [ "중국관내", "중국관내2", "중국관내3", "만주", "화북" ]; // 연해주 국내 추가
 
 let taskStatus = {
-    "FarRight" : "blue",
-    "MidRight" : "blue-purple",
-    "Mid" : "purple",
-    "MidLeft" : "red-purple",
-    "FarLeft" : "red"
+    "FarRight" : "blue2",
+    "MidRight" : "blue0",
+    "Mid" : "purple1",
+    "MidLeft" : "red2",
+    "FarLeft" : "red0"
 };
 
 let task_data = {
