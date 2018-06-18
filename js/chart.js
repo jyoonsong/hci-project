@@ -344,12 +344,15 @@ d3.gantt = function() {
                   else
                       return 'subnode txt'
               })
+              .attr("text-anchor", 'middle')
               // .attr('text-anchor', 'middle')
               .attr("x", 0)
               .attr("y", ".35em")
               .attr("transform", function(d) {
-                  x_val = x_text(d.startDate);
-                  y_val = y(getYAxisValue(task)) - 10;
+                  y_val = y(getYAxisValue(task)) + 5;
+                  x_val = x(d.startDate) + Math.max(0.8,(x(d.endDate) - x(d.startDate)))/2 // x_origin + width/2 + font/2
+                  if (x_val < 1)
+                      x_val = -5000
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .text(function (d) {
@@ -378,6 +381,7 @@ d3.gantt = function() {
 
           rect.selectAll("text.subnode")
               .transition()
+              .attr("text-anchor", 'middle')
               .attr('class', function() {
                   if (hideText)
                       return 'subnode txt hidden'
@@ -385,8 +389,12 @@ d3.gantt = function() {
                       return 'subnode txt'
               })
               .attr("transform", function(d) {
-                  x_val = x_text(d.startDate);
-                  y_val = y(getYAxisValue(task)) - 10;
+                  // x_val = x_text(d.startDate);
+                  // y_val = y(getYAxisValue(task)) - 10;
+                  x_val = x(d.startDate) + Math.max(0.8,(x(d.endDate) - x(d.startDate)))/2 // x_origin + width/2 + font/2
+                  y_val = y(getYAxisValue(task)) + (y.rangeBand() - 10)/2 + 5;
+                  if (x_val < 1)
+                      x_val = -5000
                   return "translate(" + x_val + "," + y_val + ")";
               })
               .attr("height", function(d) { return y.rangeBand() - 10; })

@@ -208,10 +208,7 @@ function getKeyByValue(object, value) {
 
 let gantt = d3.gantt().taskTypes(color_tasks).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format)
     .height(document.body.offsetHeight - 250);
-// document.querySelector("#chart").offsetHeight - 80
 
-console.log(color_tasks)
-console.log(document.body.clientHeight)
 gantt.timeDomainMode("fixed");
 gantt.timeDomain([ d3.time.month.offset(Date.UTC(year=1910,0,0,0,0), 0), Date.UTC(year=1945,0,0,0,0) ]);
 gantt.tickFormat("%m");
