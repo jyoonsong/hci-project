@@ -61,7 +61,7 @@
 }
 
 .ms-options-wrap > .ms-options > .ms-selectall.global {
-    margin: 4px 5px;
+    margin: 4px 13px;
 }
 
 .ms-options-wrap > .ms-options > ul > li.optgroup {
@@ -83,6 +83,7 @@
     width: 100%;
     padding: 8px 4px;
     margin: 1px 0;
+    padding-left: 25px !important;
 }
 
 .ms-options-wrap > .ms-options > ul li.selected label,

@@ -10,8 +10,14 @@
 }
 g.x2.axis {
   font-size: .8rem;
+  .minor, .domain {
+    fill: $grey-7;
+  }
+  .major {
+    fill: $grey-6;
+  }
 }
-.yAxis {
+.y.axis {
   align-self: stretch;
   justify-content: space-between;
   margin-left: 20px;
@@ -24,7 +30,7 @@ g.x2.axis {
     background: linear-gradient(to bottom, $blue, $red); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 3px;
     flex-grow: 1;
-    margin: 10px 0;
+    margin: -10px 0;
   }
 }
 line {
