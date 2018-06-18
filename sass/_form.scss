@@ -139,7 +139,7 @@ $control-size: 19px;
 
 .select {
   display: inline-block;
-  background: $grey-4;
+  background-color: $grey-4;
   border-radius: .5rem;
   min-width: 120px;
   position: relative;
@@ -154,6 +154,7 @@ $control-size: 19px;
     line-height: 3.8;
     font-size: 11px;
     color: $grey-7;
+    pointer-events: none;
   }
   select {
     color: $grey-7;

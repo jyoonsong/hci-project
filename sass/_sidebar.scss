@@ -1,7 +1,7 @@
 aside {
   padding: 0 2.5rem;
   transition: transform .5s ease-in-out;
-  transform: translateY( calc(40vh - 80px) );
+  transform: translateY( calc(45vh - 80px) );
   &.active {
     transform: translateY(0);
     #des .drop-link {
@@ -42,15 +42,12 @@ aside {
     border-radius: 0 25px 0 0;
     z-index: 999;
     padding-left: 4.2rem;
-    &:hover {
-      cursor: pointer;
-    }
   }
   .container:last-child {
     padding: .25rem 2rem;
     background-color: $grey-1;
     overflow-y: scroll;
-    height: calc(40vh - 80px);
+    height: calc(45vh - 80px);
   }
 }
 p {
