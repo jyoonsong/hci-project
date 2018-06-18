@@ -14,8 +14,8 @@ let Util = ( function () {
 
     document.getElementById("des-header").addEventListener("click", function(e) {
       if (sidebar.classList.contains("active")) {
-        changeHeight(sidebarHeight);
-        sidebar.classList.remove("active");
+//        changeHeight(sidebarHeight);
+        hideSidebar();
       }
       else {
         showSidebar();
@@ -34,14 +34,19 @@ let Util = ( function () {
     });
   }
   
+  function hideSidebar() {
+    sidebar.classList.remove("active");
+  }
+  
   function showSidebar() {
     if (sidebar.classList.contains("active")) return;
-    changeHeight(-1 * sidebarHeight);
+//    changeHeight(-1 * sidebarHeight);
     sidebar.classList.add("active");
   }
   
   return {
     init: init,
+    hideSidebar: hideSidebar,
     showSidebar: showSidebar
   }
   

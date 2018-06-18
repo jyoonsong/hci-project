@@ -19,6 +19,11 @@ g.x2.axis {
   }
   .major {
     fill: $grey-6;
+    font-size: .8em;
+    &:nth-child(5n-4) {
+      fill: $grey-7;
+      font-size: 1em;
+    }
   }
 }
 .y.axis {

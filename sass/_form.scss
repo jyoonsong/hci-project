@@ -154,6 +154,7 @@ $control-size: 19px;
     line-height: 3.8;
     font-size: 11px;
     color: $grey-7;
+    pointer-events: none;
   }
   select {
     color: $grey-7;

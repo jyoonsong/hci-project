@@ -27,6 +27,7 @@ let Filter = ( function () {
     document.querySelector("svg.chart").onclick = function(e) {
       if (e.target == this) { 
         unsetOpacity($nodes);
+        Util.hideSidebar();
       }
     }; 
   }
@@ -34,10 +35,10 @@ let Filter = ( function () {
   function swapAxisLabelInto(changedMode) {
     let content;
     if (changedMode == 'Color')
-      content = '<span class="text-blue">우</span><span class="bar"></span><span class="text-red">좌</span>';
+      content = '<span class="text-blue">우</span><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#4AC3FB" d="M18,16V14.5L12,8.5L6,14.5V16H18M12,11.33L14.67,14H9.33L12,11.33Z"></path></svg><span class="bar"></span><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#ec558d" d="M18,9V10.5L12,16.5L6,10.5V9H18M12,13.67L14.67,11H9.33L12,13.67Z"></path></svg><span class="text-red">좌</span>';
     else if (changedMode == 'Pos')
       content = "<span class='text-grey-6'>관내</span><span class='text-white'>관내</span><span class='text-white'>관내</span><span class='text-grey-6'>만주</span><span class='text-grey-6'>화북</span>";
-    document.querySelector(".yAxis").innerHTML = content;
+    document.querySelector(".y.axis").innerHTML = content;
 
   }
   
@@ -84,8 +85,6 @@ let Filter = ( function () {
       Util.showSidebar();
     };
   }
-  
-  
   
   function showContent(node) {
     // parse values
