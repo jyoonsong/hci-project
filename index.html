@@ -36,12 +36,14 @@
   <main class="flex flex-column">
     <!-- chart controls -->
     <header class="flex align-center">
-      <a class="col-6" href="/">
-        <span class="thin">대한민국 </span>
-        <span class="text-grey-7">독립운동의 역사 &#8482; </span>
-        &nbsp; | &nbsp;
-        <small><b>HCI Final Project</b></small>
-      </a>
+      <div class="col-6">
+        <a href="/">
+          <span class="thin">대한민국 </span>
+          <span class="text-grey-7">독립운동의 역사 &#8482; </span>
+          &nbsp; | &nbsp;
+          <small><b>HCI Final Project</b></small>
+        </a>
+      </div>
       <div class="col-6">
         <div class="search flex align-center justify-end">
           <div class="reset-tour-btn">
@@ -50,7 +52,7 @@
                   <path fill="#0b85f2" d="M21,17V5H3V17H21M21,3A2,2 0 0,1 23,5V17A2,2 0 0,1 21,19H16V21H8V19H3A2,2 0 0,1 1,17V5A2,2 0 0,1 3,3H21M5,7H11V11H5V7M5,13H11V15H5V13M13,7H19V9H13V7M13,11H19V15H13V11Z"></path>
               </svg>
             </div>
-            <a href="#" class="reset-tour-btn cd-tour-trigger text-blue-0">그래프 옵션</a>
+            <a id="showOption" href="#" class="reset-tour-btn cd-tour-trigger text-blue-0">그래프 옵션</a>
             <!-- <button id="cd-tour-trigger" class="btn" data-dismiss="modal">learn more</button> -->
           </div>
          
@@ -94,16 +96,16 @@
         </div>
       </div>
       
-      <div id="dropdown" class="dropdown">
+      <div id="filterbar" class="filter">
         <a class="btn text-grey-8">
           <b>X축 시기</b>
         </a>
         <span id="changeTime">
-          <a class="btn btn-line">전체</a>
-          <a class="btn btn-line">10년대</a>
-          <a class="btn btn-line">20년대</a>
-          <a class="btn btn-line">30년대</a>
-          <a class="btn btn-line">40년대 (~1945)</a>
+          <a class="btn btn-blue">전체</a>
+          <a class="btn btn-blue">10년대</a>
+          <a class="btn btn-blue">20년대</a>
+          <a class="btn btn-blue">30년대</a>
+          <a class="btn btn-blue">40년대</a>
         </span>
         &nbsp; | &nbsp;
         <a class="btn">

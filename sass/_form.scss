@@ -139,7 +139,7 @@ $control-size: 19px;
 
 .select {
   display: inline-block;
-  border: 1px solid #e9ecef;
+  background: $grey-4;
   border-radius: .5rem;
   min-width: 120px;
   position: relative;
@@ -151,17 +151,18 @@ $control-size: 19px;
     bottom: 0;
     vertical-align: middle;
     right: 10px;
-    line-height: 300%;
+    line-height: 3.8;
     font-size: 11px;
+    color: $grey-7;
   }
   select {
-    color: $grey-5;
+    color: $grey-7;
     cursor: pointer;
-    padding: .6rem 1rem;
+    padding: .85rem 1rem;
     border: none;
     outline: none;
     background: none;
-    font-size: .85rem;
+    font-size: 13px;
     line-height: 1.0;
     height: 100%;
     width: 100%;

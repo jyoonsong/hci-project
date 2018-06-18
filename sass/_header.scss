@@ -15,20 +15,43 @@ header {
   display: inline-block;
   margin: 0 .5rem;
 }
-.btn-line {
-  padding: .5rem 1.2rem;
-  border: 1px solid $grey-2;
-  border-radius: .5rem;
-  font-size: .85em;
-  color: $grey-5;
-  transition: all .2s ease-in;
+.btn-blue {
+  background: linear-gradient(45deg, #0084ff 25%, #1796ff 75%);
+  border-top-color: rgba(255,255,255,0.2);
+  border-right-color: rgba(255,255,255,0.2);
+  border-bottom-color: #0070d8;
+  border-left-color: #0070d8;
+  border-radius: 5px;
+  padding: .7rem 1.4rem;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  display: initial;
+  box-shadow: 0 11px 49px rgba(15,19,43,0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+  margin: 0 6px;
   &:hover, &:active, &:focus {
-    color: $grey-5;
+    background: linear-gradient(45deg, #1a90ff 25%, #31a2ff 75%);
+    color: #fff;
   }
   &.active {
-    color: $grey-5;
-    font-weight: 700;
-    background-color: $grey-1;
+    opacity: .5;
+  }
+}
+
+/* Filter bar */
+.filter {
+  position: absolute;
+  background-color: $grey-3;
+  transition: opacity .5s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 /* Header Right */
@@ -142,10 +165,4 @@ div.reset-tour-btn {
     margin-left: 24px;
     font-size: .9em;
   }
-}
-
-/* Dropdown Filter */
-.dropdown {
-  position: absolute;
-  visibility: hidden;
 }

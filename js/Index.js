@@ -1,11 +1,12 @@
 let Index = ( function () {
 
-  let $timeBtn, $nodes,
-      _cursor = false;
-
   function init() {
     Map.init();
     Filter.init();
+    
+    let filterbar = document.getElementById("filterbar");
+    let sidebar = document.getElementById("sidebar"),
+        sidebarHeight = sidebar.offsetHeight - 100;
     
     $("#searchPanel").multiselect({
         columns: 1,
@@ -15,8 +16,6 @@ let Index = ( function () {
     });
 
     document.getElementById("des-header").addEventListener("click", function(e) {
-      let sidebar = this.parentElement.parentElement,
-          sidebarHeight = sidebar.offsetHeight - 100;
       if (sidebar.classList.contains("active")) {
         changeHeight(sidebarHeight);
         sidebar.classList.remove("active");
@@ -24,6 +23,17 @@ let Index = ( function () {
       else {
         changeHeight(-1 * sidebarHeight);
         sidebar.classList.add("active");
+      }
+    });
+    
+    document.getElementById("showOption").addEventListener("click", function(e) {
+      if (filterbar.classList.contains("active")) {
+        this.innerHTML = "그래프 옵션";
+        filterbar.classList.remove("active");
+      }
+      else {
+        this.innerHTML = "옵션 숨기기";
+        filterbar.classList.add("active");
       }
     });
   }
