@@ -1,0 +1,172 @@
+input[type=text] {
+    background: $grey-4;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 13px;
+    border: none;
+    padding: 5px 10px;
+
+    &.slider-txt {
+        width: 56px;
+        float: right;
+        color: #fff;
+    }
+}
+
+$control-size: 19px;
+%control-set {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+    position: relative;
+    height: $control-size;
+    width: $control-size;
+
+    .checker {
+        background: transparent;
+        border: 2px solid $grey-6;
+        display: block;
+        height: $control-size;
+        width: $control-size;
+
+        &:hover {
+            background-color: rgba($grey-6, 0.25);
+        }
+    }
+    &[readonly] {
+        cursor: default !important;
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.checkbox-control {
+    @extend %control-set;
+
+    .checker {
+        border-radius: 3px;
+
+        &:before {
+            transform: rotate(-45deg);
+            content: "";
+            border-left: 2px solid;
+            border-bottom: 2px solid;
+            height: 6px;
+            width: 10px;
+            position: absolute;
+            left: 4px;
+            top: 5px;
+            visibility: hidden;
+        }
+    }
+    &.-multi .checker {
+        background: $grey-6;
+        border: 0 none;
+
+        &:before {
+            visibility: visible;
+        }
+    }
+    input[type="checkbox"]:checked {
+        & + .checker {
+            background: $blue-0;
+            border-width: 0;
+            color: #fff;
+
+            &:before {
+                visibility: visible;
+            }
+        }
+    }
+
+    & + label,
+    & + .label-control {
+        cursor: pointer;
+        font-weight: 400;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+}
+
+.radio-control {
+    @extend %control-set;
+    border-radius: 10px;
+
+    .checker {
+        border-radius: 10px;
+
+        &:before {
+          border-radius: 4px;
+          transform: translate(-50%, -50%);
+          content: "";
+          height: 8px;
+          width: 8px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          visibility: hidden;
+        }
+    }
+    input[type="radio"]:checked {
+        & + .checker {
+            background: $blue-0;
+            border-width: 0;
+
+            &:before {
+                background-color: #fff;
+                visibility: visible;
+            }
+        }
+    }
+    & + .radio-label-control,
+    & + .label-control {
+        cursor: pointer;
+        font-weight: 400;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+}
+
+/* Select for old design */
+
+.select {
+  display: inline-block;
+  border: 1px solid #e9ecef;
+  border-radius: .5rem;
+  min-width: 120px;
+  position: relative;
+  margin: 0 .5rem;
+  &::after {
+    content: "\25bc";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    right: 10px;
+    line-height: 300%;
+    font-size: 11px;
+  }
+  select {
+    color: $grey-5;
+    cursor: pointer;
+    padding: .6rem 1rem;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: .85rem;
+    line-height: 1.0;
+    height: 100%;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}

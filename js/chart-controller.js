@@ -6,11 +6,11 @@ let colors = [ "FarRight", "MidRight", "Mid", "MidLeft", "FarLeft" ];
 let locations = [ "중국관내", "중국관내2", "중국관내3", "만주", "화북" ]; // 연해주 국내 추가
 
 let taskStatus = {
-    "FarRight" : "blue2",
-    "MidRight" : "blue0",
-    "Mid" : "purple1",
-    "MidLeft" : "red2",
-    "FarLeft" : "red0"
+    "FarRight" : "blue-2",
+    "MidRight" : "blue-0",
+    "Mid" : "purple-1",
+    "MidLeft" : "red-2",
+    "FarLeft" : "red-0"
 };
 
 let task_data = {
@@ -165,7 +165,7 @@ function addTask(task) {
 
     // changeTimeDomain(timeDomainString);
     gantt.redraw(tasks);
-    Index.init();
+    Filter.init();
 
 };
 

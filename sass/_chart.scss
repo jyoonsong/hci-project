@@ -1,35 +1,3 @@
-/* Header */
-
-header {
-  height: 65px;
-  border-bottom: 1px solid $grey-2;
-}
-
-.logo {
-  height: 1.8rem;
-}
-
-.btn {
-  display: inline-block;
-  margin: 0 .5rem;
-}
-.btn-line {
-  padding: .5rem 1.2rem;
-  border: 1px solid $grey-2;
-  border-radius: .5rem;
-  font-size: .85em;
-  color: $grey-5;
-  transition: all .2s ease-in;
-  &:hover, &:active, &:focus {
-    color: $grey-8;
-  }
-  &.active {
-    color: $grey-8;
-    font-weight: 700;
-    background-color: $grey-1;
-  }
-}
-
 /* Chart */
 
 #chart {
