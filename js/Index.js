@@ -15,12 +15,16 @@ let Index = ( function () {
     });
 
     document.getElementById("des-header").addEventListener("click", function(e) {
-      console.log('hahaha');
-      let sidebar = this.parentElement.parentElement;
-      if (sidebar.classList.contains("active"))
+      let sidebar = this.parentElement.parentElement,
+          sidebarHeight = sidebar.offsetHeight - 100;
+      if (sidebar.classList.contains("active")) {
+        changeHeight(sidebarHeight);
         sidebar.classList.remove("active");
-      else
+      }
+      else {
+        changeHeight(-1 * sidebarHeight);
         sidebar.classList.add("active");
+      }
     });
   }
   

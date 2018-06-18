@@ -207,7 +207,8 @@ function getKeyByValue(object, value) {
 
 
 let gantt = d3.gantt().taskTypes(color_tasks).currentTaskMode('Color').taskStatus(taskStatus).tickFormat(format)
-    .height(document.querySelector("#chart").offsetHeight - 80);
+    .height(document.body.offsetHeight - 250);
+// document.querySelector("#chart").offsetHeight - 80
 
 console.log(color_tasks)
 console.log(document.body.clientHeight)
@@ -219,6 +220,14 @@ gantt.tickFormat("%m");
 /*
 * Functions
 */
+
+function changeHeight(addedHeight) {
+  let newHeight = gantt.height() + addedHeight;
+  gantt.height(newHeight);
+  console.log("changeHeight by " + addedHeight);
+  console.log("changeHeight to " + newHeight);
+  gantt.redraw(tasks);
+}
 
 function changeTime(idx) {
 //    console.log( d3.time.month.offset(PossibleTimeDomain[idx]['startDate'], 0), PossibleTimeDomain[idx]['endDate']);

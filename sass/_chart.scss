@@ -2,11 +2,15 @@
 
 #chart {
   flex-grow: 1;
+  position: relative;
 }
 .scrollable {
   overflow-x: auto;
   white-space: nowrap;
   margin-left: -20px;
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
 }
 g.x2.axis {
   font-size: .8rem;

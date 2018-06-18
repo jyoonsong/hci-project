@@ -482,6 +482,7 @@ d3.gantt = function() {
       if (!arguments.length)
           return height;
       height = +value;
+      console.log(height);
       return gantt;
   };
 
