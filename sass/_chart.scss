@@ -30,13 +30,14 @@ g.x2.axis {
   align-self: stretch;
   justify-content: space-between;
   margin-left: 20px;
-  padding: 3.5rem 2rem 6rem 0; // 2rem 2rem 3.5rem 0
+  padding: 3.5rem 1.5rem 6rem 0; // 2rem 2rem 3.5rem 0
   background-color: $bg-color;
   white-space: nowrap;
-  height: 600px;
+  height: 70vh;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 999;
   .bar {
     background: $blue; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, $blue, $red); /* Chrome 10-25, Safari 5.1-6 */
@@ -92,4 +93,7 @@ line {
   fill: rgba(0,0,0,0.6);
   transition: opacity .2s linear;
   font-size: .75em;
+}
+.subnode.txt {
+  fill: rgba(255, 255, 255, 0.75)
 }
