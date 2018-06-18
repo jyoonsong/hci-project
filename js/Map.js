@@ -11,34 +11,42 @@ let Map = ( function () {
     maxZoom: 13,
     maxBounds: bounds
   });
-  $map.createPane('labels');
-  $map.getPane('labels').style.zIndex = 650;
   
   let positron = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png', {
   }).addTo($map);
+
+//  let positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png', {
+//      pane: 'labels'
+//  }).addTo($map);
+//  
+//  console.log($map);
   
-  let positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png', {
-      pane: 'labels'
-  }).addTo($map);
+  let markers = L.layerGroup().addTo($map);
   
   function init() {
-    console.log("hi");
+    $map.createPane('labels');
+    $map.getPane('labels').style.zIndex = 650;
+   
+//    L.marker([36.8, 120.0], {
+//      riseOnHover: true,
+//      zIndexOffset: 1000
+//    }).addTo($map);
     
     $map.on("click", function(e) {
       console.log("Coordinates: " + e.latlng.toString());
-      L.marker(e.latlng).addTo($map);
     });
   
-    $map.on("contextmenu", function(e) {
-      e.preventDefault();
-
-      console.log("Coordinates: " + e.latlng.toString());
-      L.marker(e.latlng).addTo($map);
-    });
+  }
+  
+  function addMarker(x, y, name) {
+    let marker = L.marker([x, y]);
+    markers.clearLayers();
+    markers.addLayer(marker);
   }
   
   return {
-    init: init
+    init: init,
+    addMarker: addMarker
   }
   
 } )();

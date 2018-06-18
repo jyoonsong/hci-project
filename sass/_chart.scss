@@ -37,7 +37,7 @@ g.x2.axis {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 990;
   .bar {
     background: $blue; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, $blue, $red); /* Chrome 10-25, Safari 5.1-6 */

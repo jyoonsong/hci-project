@@ -92,6 +92,12 @@ let Filter = ( function () {
     vals.forEach( function(val) {
       document.getElementById("des-" + val).innerHTML = node.getAttribute("data-" + val);
     });
+    // control map
+    let rand_x = Math.random() * 13 - 5,
+        rand_y = Math.random() * 10 - 5,
+        x = 37.4 + rand_x,
+        y = 121.4 + rand_y;
+    Map.addMarker(x, y, node.getAttribute("des-name"));
     // parse events
     let events = node.dataset.events.split(',');
     let eventBox = document.getElementById("des-events");

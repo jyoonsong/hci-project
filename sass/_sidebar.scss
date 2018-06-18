@@ -2,6 +2,9 @@ aside {
   padding: 0 2.5rem;
   transition: transform .5s ease-in-out;
   transform: translateY( calc(45vh - 80px) );
+  z-index: 999;
+  position: absolute;
+  width: 100%;
   &.active {
     transform: translateY(0);
     #des .drop-link {
@@ -17,6 +20,7 @@ aside {
 // map
 #map {
   border-radius: 25px 0 0 0;
+  box-shadow: rgba(0,0,0,0.6) 0 0 6px 8px;
 }
 // description
 #des {
